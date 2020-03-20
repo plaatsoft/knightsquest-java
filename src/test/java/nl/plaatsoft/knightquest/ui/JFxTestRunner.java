@@ -9,6 +9,8 @@ import com.sun.javafx.application.PlatformImpl;
 
 /**
  * The Class JFxTestRunner.
+ * 
+ * @author wplaat
  */
 public class JFxTestRunner extends BlockJUnit4ClassRunner
 {

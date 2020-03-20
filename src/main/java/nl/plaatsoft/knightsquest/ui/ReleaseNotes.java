@@ -1,24 +1,3 @@
-/**
- *  @file
- *  @brief 
- *  @author wplaat
- *
- *  Copyright (C) 2008-2016 PlaatSoft
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, version 3.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
 package nl.plaatsoft.knightsquest.ui;
 
 import javafx.beans.value.ChangeListener;
@@ -38,6 +17,8 @@ import nl.plaatsoft.knightsquest.tools.MyScrollBar;
 
 /**
  * The Class ReleaseNotes.
+ * 
+ * @author wplaat
  */
 public class ReleaseNotes extends MyPanel {
 
@@ -46,7 +27,8 @@ public class ReleaseNotes extends MyPanel {
 
 			"20-03-2020 (Version 0.5.0)\n" 
 					+ "- Improve logging framework.\n"
-					+ "- Added java doc source code.\n",
+					+ "- Added java doc source code.\n"
+					+ "- Improve web services layer.\n",
 									
 			"28-11-2016 (Version 0.4.0)\n" 
 					+ "- Added Mode Selector page.\n"

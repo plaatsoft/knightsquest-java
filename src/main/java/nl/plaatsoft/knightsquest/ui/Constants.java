@@ -23,6 +23,8 @@ package nl.plaatsoft.knightsquest.ui;
 
 /**
  * The Class Constants.
+ * 
+ * @author wplaat
  */
 public class Constants {
 
@@ -39,10 +41,10 @@ public class Constants {
 	public static final String APP_WS_NAME = "Java-KnightsQuest";
 	
 	/** The Constant APP_WS_URL. */
-	public static final String APP_WS_URL = "service.plaatsoft.nl";
+	public static final String APP_WS_URL = "https://service.plaatsoft.nl";
 	
 	/** The Constant APP_DONATE_URL. */
-	public static final String APP_DONATE_URL = "http://www.plaatsoft.nl/donate";
+	public static final String APP_DONATE_URL = "https://www.plaatsoft.nl/donate";
 	
 	/** The Constant APP_UDP_PORT. */
 	public static final int APP_UDP_PORT = 20000; 	

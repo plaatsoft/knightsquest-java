@@ -28,6 +28,8 @@ import nl.plaatsoft.knightsquest.tools.MySound;
 
 /**
  * The Class Communication.
+ * 
+ * @author wplaat
  */
 public class Communication extends MyPanel {
 	

@@ -4,6 +4,8 @@ import javafx.scene.control.ToggleButton;
 
 /**
  * The Class MyToggleButton.
+ * 
+ * @author wplaat
  */
 public class MyToggleButton extends ToggleButton {
 

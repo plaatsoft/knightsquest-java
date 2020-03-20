@@ -5,6 +5,8 @@ import nl.plaatsoft.knightsquest.model.Player;
 
 /**
  * The Class MySound.
+ * 
+ * @author wplaat
  */
 public class MySound {
 

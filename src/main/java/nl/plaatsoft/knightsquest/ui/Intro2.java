@@ -21,6 +21,8 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 
 /**
  * The Class Intro2.
+ * 
+ * @author wplaat
  */
 public class Intro2 extends MyPanel {
 

@@ -1,28 +1,5 @@
-/**
- *  @file
- *  @brief 
- *  @author wplaat
- *
- *  Copyright (C) 2008-2016 PlaatSoft
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, version 3.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
 package nl.plaatsoft.knightsquest.network;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
@@ -38,9 +15,16 @@ import nl.plaatsoft.knightsquest.ui.Constants;
  * The Class CloudScore.
  */
 public class CloudScore {
-
+	
 	/** The Constant log. */
 	private static final Logger log = LogManager.getLogger( CloudScore.class);
+	
+	/**
+	 * Instantiates a new cloud score.
+	 */
+	private CloudScore() {
+	    throw new IllegalStateException("CloudScore class");
+    }
 	
 	/**
 	 * Sets the.
@@ -55,14 +39,14 @@ public class CloudScore {
 		parameters  = "action=setScore&";
 		parameters += "pid=" + CloudProduct.getPid()+ "&";
 		parameters += "uid=" + CloudUser.getUid()  + "&";
-		// Remove milli seconds 
+		/* Remove milli seconds */
 		parameters += "dt=" + (score.getTimestamp().getTime()/1000) + "&";
 		parameters += "score=" + score.getScore() + "&";
 		parameters += "level=" + score.getLevel();
-		
-		log.info(Constants.APP_WS_URL+ " "+parameters);
-		String result = CloudUtils.executePost("https://"+Constants.APP_WS_URL, parameters);
-		log.info(result);
+				
+		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("RX: {}", json);
 	}
 	
 	/**
@@ -77,23 +61,23 @@ public class CloudScore {
 		parameters += "pid=" + CloudProduct.getPid() + "&";
 		parameters += "uid=" + CloudUser.getUid();
 		
-		log.info(Constants.APP_WS_URL+ " "+parameters);
-		String json = CloudUtils.executePost("https://"+Constants.APP_WS_URL, parameters);
-		log.info(json);
+		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("RX: {}", json);
 		
 		try {
 			JSONArray jsonarray = new JSONArray(json);
 			for (int i = 0; i < jsonarray.length(); i++) {
 			    JSONObject jsonobject = jsonarray.getJSONObject(i);
-			    String dt = jsonobject.getString("dt");
+			    long dt = (jsonobject.getLong("dt")*1000);
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
 			    String nickname = "";
 			    String country = "";
 			    
-			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			    Date date = df.parse(dt);
-			    
+			    Date date = new Date();
+			    date.setTime(dt);
+			    			    			    
 				Score score = new Score(date, points, level, nickname, country);
 				MyFactory.getScoreDAO().addLocal(score);  	   
 			}			
@@ -113,25 +97,27 @@ public class CloudScore {
 		parameters  = "action=getGlobalScore&";
 		parameters += "pid=" + CloudProduct.getPid();
 		
-		log.info(Constants.APP_WS_URL+ " "+parameters);
-		String json = CloudUtils.executePost("https://"+Constants.APP_WS_URL, parameters);
-		log.info(json);
+		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("RX: {}", json);
 						
 		try {
 			JSONArray jsonarray = new JSONArray(json);
 			for (int i = 0; i < jsonarray.length(); i++) {
 			    JSONObject jsonobject = jsonarray.getJSONObject(i);
-			    String dt = jsonobject.getString("dt");
+			    long dt = jsonobject.getLong("dt")*1000;
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
-			    String nickname = jsonobject.getString("nickname");
-			    String country = jsonobject.getString("country");
+			    
+			    JSONObject object2 = jsonobject.getJSONObject("user");		    
+			    String nickname = object2.getString("nickname");
+			    String country = object2.getString("country");
 			    			    
-			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			    Date date = df.parse(dt);
+			    Date date = new Date();
+			    date.setTime(dt);
 			    
 				Score score = new Score(date, points, level, nickname, country);
-				MyFactory.getScoreDAO().addGlobal(score);   
+				MyFactory.getScoreDAO().addGlobal(score);   	   
 			}			
 		} catch (Exception e) {
 			log.error(e.getMessage());

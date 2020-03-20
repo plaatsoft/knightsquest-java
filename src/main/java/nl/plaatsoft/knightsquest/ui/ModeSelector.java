@@ -15,6 +15,8 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 
 /**
  * The Class ModeSelector.
+ * 
+ * @author wplaat
  */
 public class ModeSelector extends MyPanel {
 	

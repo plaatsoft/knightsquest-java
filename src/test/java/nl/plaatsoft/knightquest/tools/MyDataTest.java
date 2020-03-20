@@ -8,6 +8,8 @@ import nl.plaatsoft.knightsquest.tools.MyData;
 
 /**
  * The Class MyDataTest.
+ * 
+ * @author wplaat
  */
 public class MyDataTest {
 

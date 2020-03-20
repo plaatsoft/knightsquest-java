@@ -1,24 +1,3 @@
-/**
- *  @file
- *  @brief 
- *  @author wplaat
- *
- *  Copyright (C) 2008-2016 PlaatSoft
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, version 3.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
 package nl.plaatsoft.knightsquest.network;
 
 import java.io.BufferedReader;
@@ -35,11 +14,20 @@ import nl.plaatsoft.knightsquest.ui.Constants;
 
 /**
  * The Class CloudUtils.
+ * 
+ * @author wplaat
  */
 public class CloudUtils {
 
 	/** The Constant log. */
-	private static final Logger log = LogManager.getLogger(CloudUtils.class);
+	private static final Logger log = LogManager.getLogger( CloudUtils.class);
+		
+	/**
+	 * Instantiates a new cloud utils.
+	 */
+	private CloudUtils() {
+	    throw new IllegalStateException("CloudUtils class");
+    }
 	
 	/**
 	 * Execute get.
@@ -92,7 +80,7 @@ public class CloudUtils {
 		HttpURLConnection connection = null;
 
 		try {
-			URL url = new URL(targetURL);
+			URL url = new URL(targetURL+"?"+urlParameters);
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

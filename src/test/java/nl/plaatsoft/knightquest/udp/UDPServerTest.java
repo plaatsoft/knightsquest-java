@@ -14,6 +14,8 @@ import nl.plaatsoft.knightsquest.ui.Constants;
 
 /**
  * The Class UDPServerTest.
+ * 
+ * @author wplaat
  */
 public class UDPServerTest {
 

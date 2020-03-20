@@ -5,6 +5,8 @@ import javafx.scene.control.ListView;
 
 /**
  * The Class MyListView.
+ * 
+ * @author wplaat
  */
 public class MyListView extends ListView<Object> {
 

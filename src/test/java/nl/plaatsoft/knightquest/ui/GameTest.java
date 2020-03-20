@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 
 /**
  * The Class GameTest.
+ * 
+ * @author wplaat
  */
 @RunWith( JFxTestRunner.class )
 public class GameTest {
