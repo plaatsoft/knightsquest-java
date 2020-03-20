@@ -21,33 +21,68 @@
 
 package nl.plaatsoft.knightsquest.ui;
 
+/**
+ * The Class Constants.
+ */
 public class Constants {
 
-	public final static String APP_NAME = "KnightsQuest";
-	public final static String APP_VERSION = "0.4";
-	public final static String APP_BUILD = "Build (24-11-2016)";
+	/** The Constant APP_NAME. */
+	public static final String APP_NAME = "KnightsQuest";
 	
-	public final static String APP_WS_NAME = "Java-KnightsQuest";
-	public final static String APP_WS_URL = "service.plaatsoft.nl";
-	public final static String APP_DONATE_URL = "http://www.plaatsoft.nl/donate";
-	public final static int APP_UDP_PORT = 20000; 	
+	/** The Constant APP_VERSION. */
+	public static final String APP_VERSION = "0.5.0";
 	
-	public final static int MAX_LEVELS = 10; 	
+	/** The Constant APP_BUILD. */
+	public static final String APP_BUILD = "Build (20-03-2016)";
 	
-	public final static int SEGMENT_SIZE_640 = 10;		
-	public final static double OFFSET_X_640 = 15; 
-	public final static double OFFSET_Y_480 = 10;
+	/** The Constant APP_WS_NAME. */
+	public static final String APP_WS_NAME = "Java-KnightsQuest";
 	
-	public final static int SEGMENT_SIZE_800 = 12;	
-	public final static double OFFSET_X_800 = 30; 
-	public final static double OFFSET_Y_600 = 20;
+	/** The Constant APP_WS_URL. */
+	public static final String APP_WS_URL = "service.plaatsoft.nl";
 	
-	public final static int SEGMENT_SIZE_1024 = 16;	
-	public final static double OFFSET_X_1024 = 20; 
-	public final static double OFFSET_Y_768 = 10; 	
+	/** The Constant APP_DONATE_URL. */
+	public static final String APP_DONATE_URL = "http://www.plaatsoft.nl/donate";
+	
+	/** The Constant APP_UDP_PORT. */
+	public static final int APP_UDP_PORT = 20000; 	
+	
+	/** The Constant MAX_LEVELS. */
+	public static final int MAX_LEVELS = 10; 	
+	
+	/** The Constant SEGMENT_SIZE_640. */
+	public static final int SEGMENT_SIZE_640 = 10;		
+	
+	/** The Constant OFFSET_X_640. */
+	public static final double OFFSET_X_640 = 15; 
+	
+	/** The Constant OFFSET_Y_480. */
+	public static final double OFFSET_Y_480 = 10;
+	
+	/** The Constant SEGMENT_SIZE_800. */
+	public static final int SEGMENT_SIZE_800 = 12;	
+	
+	/** The Constant OFFSET_X_800. */
+	public static final double OFFSET_X_800 = 30; 
+	
+	/** The Constant OFFSET_Y_600. */
+	public static final double OFFSET_Y_600 = 20;
+	
+	/** The Constant SEGMENT_SIZE_1024. */
+	public static final int SEGMENT_SIZE_1024 = 16;	
+	
+	/** The Constant OFFSET_X_1024. */
+	public static final double OFFSET_X_1024 = 20; 
+	
+	/** The Constant OFFSET_Y_768. */
+	public static final double OFFSET_Y_768 = 10; 	
 			
-	public final static int SEGMENT_X = 15;
-	public final static int SEGMENT_Y = 45;
+	/** The Constant SEGMENT_X. */
+	public static final int SEGMENT_X = 15;
 	
-	public final static double SCALE = 1; 
+	/** The Constant SEGMENT_Y. */
+	public static final int SEGMENT_Y = 45;
+	
+	/** The Constant SCALE. */
+	public static final double SCALE = 1; 
 }

@@ -23,7 +23,8 @@ package nl.plaatsoft.knightsquest.ui;
 
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -35,10 +36,19 @@ import javafx.stage.WindowEvent;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyMusic;
 
+/**
+ * The Class Main.
+ */
 public class Main extends Application {
 
-	final static Logger log = Logger.getLogger( Main.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( Main.class);
 		
+	/**
+	 * Start.
+	 *
+	 * @param primaryStage the primary stage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -77,6 +87,11 @@ public class Main extends Application {
 		MyMusic.play();        
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		log.info(Constants.APP_NAME + " v" + Constants.APP_VERSION+" start");

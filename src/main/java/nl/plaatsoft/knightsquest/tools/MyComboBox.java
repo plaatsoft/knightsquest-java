@@ -23,8 +23,20 @@ package nl.plaatsoft.knightsquest.tools;
 
 import javafx.scene.control.ComboBox;
 
+/**
+ * The Class MyComboBox.
+ */
 public class MyComboBox extends ComboBox<Object> {
 
+	/**
+	 * Instantiates a new my combo box.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param selected the selected
+	 * @param options the options
+	 * @param fontSize the font size
+	 */
 	public MyComboBox(int x, int y, String selected, String[] options, int fontSize ) {
 	
 		setLayoutX(x);

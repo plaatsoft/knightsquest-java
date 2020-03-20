@@ -28,14 +28,25 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class CloudUtils.
+ */
 public class CloudUtils {
 
-	final static Logger log = Logger.getLogger( CloudUtils.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(CloudUtils.class);
 	
+	/**
+	 * Execute get.
+	 *
+	 * @param targetURL the target URL
+	 * @return the string
+	 */
 	public static String executeGet(String targetURL) {
 
 		HttpURLConnection con=null;
@@ -68,6 +79,13 @@ public class CloudUtils {
 		}		
 	}
 	
+	/**
+	 * Execute post.
+	 *
+	 * @param targetURL the target URL
+	 * @param urlParameters the url parameters
+	 * @return the string
+	 */
 	public static String executePost(String targetURL, String urlParameters) {
 		
 		String text="";

@@ -28,8 +28,20 @@ import javafx.scene.control.Button;
 
 import nl.plaatsoft.knightsquest.ui.Navigator;
 
+/**
+ * The Class MyButton.
+ */
 public class MyButton extends Button {
 
+	/**
+	 * Instantiates a new my button.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param value the value
+	 * @param fontSize the font size
+	 * @param page the page
+	 */
 	public MyButton(double x, double y, String value, int fontSize, final int page) {
 				
 		int width = 180;

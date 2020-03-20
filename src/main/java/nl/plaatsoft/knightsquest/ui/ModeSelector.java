@@ -13,8 +13,14 @@ import nl.plaatsoft.knightsquest.tools.MyImageView;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class ModeSelector.
+ */
 public class ModeSelector extends MyPanel {
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {		
 				
 		Image image1 = new Image("images/background4.jpg");

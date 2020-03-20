@@ -32,8 +32,14 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Credits.
+ */
 public class Credits extends MyPanel {
 
+	/**
+	 * Instantiates a new credits.
+	 */
 	public Credits() {
 		
 		Image image1 = new Image("images/background4.jpg");
@@ -65,6 +71,9 @@ public class Credits extends MyPanel {
 	    getChildren().add( new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight()-60, "Close", 18, Navigator.HOME));		
 	}
 
+	/**
+	 * Draw.
+	 */
 	@Override
 	public void draw() {
 		

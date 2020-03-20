@@ -7,6 +7,9 @@ import org.junit.runners.model.InitializationError;
 
 import com.sun.javafx.application.PlatformImpl;
 
+/**
+ * The Class JFxTestRunner.
+ */
 public class JFxTestRunner extends BlockJUnit4ClassRunner
 {
   /**
@@ -28,6 +31,11 @@ public class JFxTestRunner extends BlockJUnit4ClassRunner
     }
   }
 
+  /**
+   * Setup java FX.
+   *
+   * @throws InterruptedException the interrupted exception
+   */
   private static void setupJavaFX() throws InterruptedException
   {
     final CountDownLatch latch = new CountDownLatch( 1 );

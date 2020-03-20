@@ -21,21 +21,39 @@
 
 package nl.plaatsoft.knightsquest.tools;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class MyData.
+ */
 public class MyData {
 	
-	final static Logger log = Logger.getLogger( MyData.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( MyData.class);
 	
+	/** The Constant MODE_1P. */
 	public static final int MODE_1P = 1;
+	
+	/** The Constant MODE_2P. */
 	public static final int MODE_2P = 2;
 		
+	/** The level. */
 	private static int level = 0;
+	
+	/** The map. */
 	private static int map = 1;
+	
+	/** The mode. */
 	private static int mode = 1;
 		
+	/**
+	 * Gets the players.
+	 *
+	 * @return the players
+	 */
 	public static int getPlayers() {
 		
 		int amount=getBots() + 1;
@@ -47,6 +65,11 @@ public class MyData {
 		return amount; 
 	}
 	
+	/**
+	 * Gets the seed.
+	 *
+	 * @return the seed
+	 */
 	public static int getSeed() {
 		
 		switch (map) {
@@ -63,6 +86,11 @@ public class MyData {
 	}
 	
 	
+	/**
+	 * Gets the bots.
+	 *
+	 * @return the bots
+	 */
 	public static int getBots() {
 		
 		int value = level+1;
@@ -77,11 +105,21 @@ public class MyData {
 		return value;
 	}
 	
+	/**
+	 * Gets the lands.
+	 *
+	 * @return the lands
+	 */
 	public static int getLands() {		
 		int value = 3;		
 		return value;
 	}
 	
+	/**
+	 * Gets the towers.
+	 *
+	 * @return the towers
+	 */
 	public static int getTowers() {
 		
 		int value = Math.round(level/3)+1;
@@ -96,6 +134,11 @@ public class MyData {
 		return value;
 	}
 
+	/**
+	 * Gets the chance new soldier.
+	 *
+	 * @return the chance new soldier
+	 */
 	public static int getChanceNewSoldier() {
 		
 		int value=1;
@@ -122,6 +165,11 @@ public class MyData {
 		return value;
 	}
 	
+	/**
+	 * Gets the harbors.
+	 *
+	 * @return the harbors
+	 */
 	public static int getHarbors() {
 		
 		int value = 0;
@@ -144,32 +192,68 @@ public class MyData {
 		return value;
 	}
 	
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
 	public static int getLevel() {
 		return level;
 	}
 	
+	/**
+	 * Sets the level.
+	 *
+	 * @param level the new level
+	 */
 	public static void setLevel(int level) {
 		MyData.level = level;
 	}
 
+	/**
+	 * Sets the mode.
+	 *
+	 * @param mode the new mode
+	 */
 	public static void setMode(int mode) {
 		MyData.mode = mode;
 	}
 	
+	/**
+	 * Gets the mode.
+	 *
+	 * @return the mode
+	 */
 	public static int getMode() {
 		return mode;
 	}
 	
+	/**
+	 * Gets the map.
+	 *
+	 * @return the map
+	 */
 	public static int getMap() {
 		return map;
 	}
 
+	/**
+	 * Sets the map.
+	 *
+	 * @param map the new map
+	 */
 	public static void setMap(int map) {
 		
 		MyRandom.clear();
 		MyData.map = map;
 	}
 	
+	/**
+	 * Gets the next map.
+	 *
+	 * @param map the map
+	 * @return the next map
+	 */
 	public static int getNextMap(int map) {
 		
 		int value = 0;

@@ -21,7 +21,8 @@
 
 package nl.plaatsoft.knightsquest.ui;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -46,15 +47,34 @@ import nl.plaatsoft.knightsquest.tools.MyToggleButton;
 import nl.plaatsoft.knightsquest.tools.MyComboBox;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
+/**
+ * The Class Settings.
+ */
 public class Settings extends MyPanel {
 	
-	final static Logger log = Logger.getLogger(Settings.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(Settings.class);
 	
-	private final static int MAX=8;
+	/** The Constant MAX. */
+	private static final int MAX=8;
+	
+	/** The label. */
 	private Label[] label = new Label[MAX];
+	
+	/** The letters. */
 	private char[] letters = {'-','-','-','-','-','-','-','-'};
+	
+	/** The task. */
 	private Task<Void> task;
 	
+	/**
+	 * Label special.
+	 *
+	 * @param pos the pos
+	 * @param x the x
+	 * @param y the y
+	 * @return the label
+	 */
 	public Label labelSpecial(int pos, int x, int y) {
         			
 		label[pos] = new Label();
@@ -70,6 +90,16 @@ public class Settings extends MyPanel {
 		return label[pos];
 	}	
 	
+	/**
+	 * Button special.
+	 *
+	 * @param pos the pos
+	 * @param x the x
+	 * @param y the y
+	 * @param text the text
+	 * @param up the up
+	 * @return the button
+	 */
 	private Button buttonSpecial(final int pos, int x, int y, String text, final boolean up) {
 	
 		Button button = new Button();
@@ -101,6 +131,9 @@ public class Settings extends MyPanel {
 		return button;
 	}
 		   		  
+	/**
+	 * Instantiates a new settings.
+	 */
 	public Settings() {
 		
 		String nickName = CloudUser.getNickname();
@@ -216,7 +249,7 @@ public class Settings extends MyPanel {
         
 		task = new Task<Void>() {
 	        public Void call() {
-	        	CloudUser.set(new String(letters).replaceAll("-", ""));         
+	        	CloudUser.set(new String(letters).replace("-", ""));         
 	            return null;
 	        }
 		};
@@ -229,9 +262,10 @@ public class Settings extends MyPanel {
         });		
 	}
 
+	/**
+	 * Draw.
+	 */
 	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		
+	public void draw() {		
 	}
 }

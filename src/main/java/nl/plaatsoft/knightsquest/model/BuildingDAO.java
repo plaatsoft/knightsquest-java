@@ -31,15 +31,32 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyRandom;
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class BuildingDAO.
+ */
 public class BuildingDAO {
 	
-	private List <Land> buildings = new ArrayList<Land>();	
+	/** The buildings. */
+	private List <Land> buildings = new ArrayList<>();	
+	
+	/** The habor. */
 	private Image habor;
 			
+	/**
+	 * Inits the.
+	 *
+	 * @param size the size
+	 */
 	public void init(int size) {
 		habor = new Image("images/habor.png", size+4, size+4, false, false);
 	}
 	
+	/**
+	 * Gets the.
+	 *
+	 * @param type the type
+	 * @return the image
+	 */
 	public Image get(BuildingEnum type) {
 		
 		switch(type) {
@@ -52,6 +69,12 @@ public class BuildingDAO {
 		}
 	}
 	
+	/**
+	 * Check harbor distance.
+	 *
+	 * @param land the land
+	 * @return true, if successful
+	 */
 	private boolean checkHarborDistance(Land land) {
 		
 		/* Check if distance between two habors is at least to land segments */
@@ -73,6 +96,9 @@ public class BuildingDAO {
 		return true;
 	}
 	
+	/**
+	 * Creates the harbors.
+	 */
 	public void createHarbors() {
 				
 		List <Land> list2 = new ArrayList<Land>();
@@ -107,6 +133,12 @@ public class BuildingDAO {
 		}			
 	}
 	
+	/**
+	 * Gets the free harbor.
+	 *
+	 * @param land the land
+	 * @return the free harbor
+	 */
 	public List<Land> getFreeHarbor(Land land) {
 				
 		List <Land> list2 = new ArrayList<Land>();
@@ -122,10 +154,20 @@ public class BuildingDAO {
 	}
 			
 
+	/**
+	 * Gets the buildings.
+	 *
+	 * @return the buildings
+	 */
 	public List<Land> getBuildings() {
 		return buildings;
 	}
 
+	/**
+	 * Sets the buildings.
+	 *
+	 * @param buildings the new buildings
+	 */
 	public void setBuildings(List<Land> buildings) {
 		this.buildings = buildings;
 	}

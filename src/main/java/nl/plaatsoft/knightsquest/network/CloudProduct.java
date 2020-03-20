@@ -21,23 +21,33 @@
 
 package nl.plaatsoft.knightsquest.network;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.json.JSONObject;
 
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class CloudProduct.
+ */
 public class CloudProduct {
 
-	final static Logger log = Logger.getLogger( CloudProduct.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( CloudProduct.class);
 	
+	/** The pid. */
 	private static int pid=0;
 	
+	/**
+	 * Fetch.
+	 */
 	public static void fetch() {
 
 		String parameters = "action=getProduct"+
 				"&product=" + Constants.APP_WS_NAME+
 				"&version=" + Constants.APP_VERSION+
-				"&os="+System.getProperty("os.name").replaceAll(" ","");
+				"&os="+System.getProperty("os.name").replace(" ","");
 						
 		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost("https://"+Constants.APP_WS_URL, parameters);
@@ -51,6 +61,11 @@ public class CloudProduct {
 		}
 	}
 	
+	/**
+	 * Gets the pid.
+	 *
+	 * @return the pid
+	 */
 	public static int getPid() {
 		if (pid==0) {
 			fetch();

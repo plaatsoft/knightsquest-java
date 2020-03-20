@@ -33,8 +33,14 @@ import nl.plaatsoft.knightsquest.tools.MyHyperlink;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Donate.
+ */
 public class Donate extends MyPanel {
 
+	/**
+	 * Instantiates a new donate.
+	 */
 	public Donate() {
 		
 		Image image1 = new Image("images/background4.jpg");
@@ -68,6 +74,9 @@ public class Donate extends MyPanel {
     	getChildren().add(new MyLabel(0, y, "Many thanks for your support!", 20, "white"));    	
 	}
 
+	/**
+	 * Draw.
+	 */
 	@Override
 	public void draw() {
 

@@ -1,6 +1,7 @@
 package nl.plaatsoft.knightsquest.ui;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,17 +26,37 @@ import nl.plaatsoft.knightsquest.tools.MyListView;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 import nl.plaatsoft.knightsquest.tools.MySound;
 
+/**
+ * The Class Communication.
+ */
 public class Communication extends MyPanel {
 	
-	final static Logger log = Logger.getLogger(Communication.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(Communication.class);
 	
+	/** The gc. */
 	private GraphicsContext gc; 
+	
+	/** The map. */
 	private int map = 1000;
+	
+	/** The level. */
 	private int level = 10;
+	
+	/** The task 1. */
 	private Task<Void> task1;
+	
+	/** The stop. */
 	private boolean stop = false;
+	
+	/** The list. */
 	private ObservableList<String> list = FXCollections.observableArrayList();
 	
+	/**
+	 * Draw map.
+	 *
+	 * @param map the map
+	 */
 	private void drawMap(int map) {
 				
 		int size=5;		
@@ -53,6 +74,9 @@ public class Communication extends MyPanel {
 		MyFactory.getLandDAO().draw();		
 	}
 		
+	/**
+	 * Inits the canvas.
+	 */
 	private void initCanvas() {
 		
 		int size=5;
@@ -100,6 +124,9 @@ public class Communication extends MyPanel {
 		getChildren().add(canvas);
 	}
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {		
 		
 		Image image1 = new Image("images/background4.jpg");

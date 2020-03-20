@@ -40,10 +40,17 @@ import nl.plaatsoft.knightsquest.tools.MyImageView;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Intro1.
+ */
 public class Intro1 extends MyPanel {
 
+	/** The image view 1. */
 	private MyImageView imageView1;
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {		
 				
 		Image image1 = new Image("images/background1.jpg");

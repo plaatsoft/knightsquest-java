@@ -35,8 +35,14 @@ import nl.plaatsoft.knightsquest.tools.MyImageView;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Help.
+ */
 public class Help extends MyPanel {
 
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 		
 		MyFactory.getSoldierDAO().init(20);

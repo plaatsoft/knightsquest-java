@@ -21,15 +21,25 @@
 
 package nl.plaatsoft.knightsquest.network;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class CloudNewVersion.
+ */
 public class CloudNewVersion {
 	
-	final static Logger log = Logger.getLogger( CloudNewVersion.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(CloudNewVersion.class);
 		
+	/**
+	 * Gets the.
+	 *
+	 * @return the string
+	 */
 	public static String get() {
 
 		String returnValue="";		

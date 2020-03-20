@@ -25,27 +25,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
+/**
+ * The Class Region.
+ */
 public class Region {
 
-	final static Logger log = Logger.getLogger( Region.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( Region.class);
 	
+	/** The id. */
 	private int id;	
+	
+	/** The player. */
 	private Player player;
+	
+	/** The lands. */
 	private List <Land> lands = new ArrayList<Land>();
 
+	/**
+	 * Instantiates a new region.
+	 *
+	 * @param id the id
+	 * @param player the player
+	 */
 	public Region(int id, Player player) {
 		this.id = id;
 		this.player = player;
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	public String toString() {
 		return "regionId="+id;
 	}
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 			
 		//log.info("draw region [id="+id+"|landSize="+lands.size()+"]");
@@ -57,6 +81,11 @@ public class Region {
 		}
 	}
 	
+	/**
+	 * Food available.
+	 *
+	 * @return the int
+	 */
 	public int foodAvailable() {
 		
 		int foodDemand = 0;
@@ -76,26 +105,56 @@ public class Region {
 		return foodAvailable;
 	}
 	
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Sets the lands.
+	 *
+	 * @param lands the new lands
+	 */
 	public void setLands(List<Land> lands) {
 		this.lands = lands;
 	}
 	
+	/**
+	 * Gets the lands.
+	 *
+	 * @return the lands
+	 */
 	public List<Land> getLands() {
 		return lands;
 	}
 
+	/**
+	 * Gets the player.
+	 *
+	 * @return the player
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 
+	/**
+	 * Sets the player.
+	 *
+	 * @param player the new player
+	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}

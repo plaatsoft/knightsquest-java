@@ -21,7 +21,8 @@
 
 package nl.plaatsoft.knightsquest.ui;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +35,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.media.AudioClip;
+
 import nl.plaatsoft.knightsquest.tools.MyButton;
 import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
@@ -43,16 +44,35 @@ import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 import nl.plaatsoft.knightsquest.tools.MySound;
 
+/**
+ * The Class MapSelector.
+ */
 public class MapSelector extends MyPanel {
 
-	final static Logger log = Logger.getLogger(MapSelector.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(MapSelector.class);
 	
+	/** The level. */
 	private int level = 0;			
+	
+	/** The label 1. */
 	private MyLabel[] label1 = new MyLabel[6];
+	
+	/** The label 2. */
 	private MyLabel[] label2 = new MyLabel[6];	
+	
+	/** The image. */
 	private MyImageView[] image = new MyImageView[6];	
+	
+	/** The gc. */
 	private GraphicsContext[] gc = new GraphicsContext[6];
 		
+	/**
+	 * Creates the map.
+	 *
+	 * @param gc the gc
+	 * @param map the map
+	 */
 	private void createMap(GraphicsContext gc, int map) {
 				
 		int size=3;		
@@ -85,6 +105,11 @@ public class MapSelector extends MyPanel {
 	}
 	
 		
+	/**
+	 * Creates the maps.
+	 *
+	 * @param page the page
+	 */
 	private void createMaps(int page) {
 		for (int i=0; i<6; i++) {
 			
@@ -105,6 +130,14 @@ public class MapSelector extends MyPanel {
 		}
 	}
 
+	/**
+	 * Creates the canvas.
+	 *
+	 * @param id the id
+	 * @param x the x
+	 * @param y the y
+	 * @param size the size
+	 */
 	private void createCanvas(int id, int x, int y, int size) {
 
 		Canvas canvas = new Canvas((Constants.SEGMENT_X * size * 4),(Constants.SEGMENT_Y * size));
@@ -126,6 +159,9 @@ public class MapSelector extends MyPanel {
 		getChildren().add(image[id]);	
 	}
 
+	/**
+	 * Draw canvas.
+	 */
 	private void drawCanvas() {
 				
 		int size=3;
@@ -171,6 +207,9 @@ public class MapSelector extends MyPanel {
 		createCanvas(5, x, y, size);		
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	public void init() {
 				
 		level = (MyFactory.getSettingDAO().getSettings().getHighestMap()/10);	
@@ -212,10 +251,10 @@ public class MapSelector extends MyPanel {
 		getChildren().add(next);
 	}
 
-
+	/**
+	 * Draw.
+	 */
 	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		
+	public void draw() {	
 	}
 }

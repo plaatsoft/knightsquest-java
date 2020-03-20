@@ -25,7 +25,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -33,10 +34,21 @@ import nl.plaatsoft.knightsquest.model.Score;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class CloudScore.
+ */
 public class CloudScore {
 
-	final static Logger log = Logger.getLogger( CloudScore.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( CloudScore.class);
 	
+	/**
+	 * Sets the.
+	 *
+	 * @param product the product
+	 * @param version the version
+	 * @param score the score
+	 */
 	public static void set(String product, String version, Score score) {
 					
 		String parameters;
@@ -53,6 +65,11 @@ public class CloudScore {
 		log.info(result);
 	}
 	
+	/**
+	 * Gets the local.
+	 *
+	 * @return the local
+	 */
 	public static void getLocal() {
 		
 		String parameters;
@@ -85,6 +102,11 @@ public class CloudScore {
 		}
 	}
 	
+	/**
+	 * Gets the global.
+	 *
+	 * @return the global
+	 */
 	public static void getGlobal() {
 		
 		String parameters;

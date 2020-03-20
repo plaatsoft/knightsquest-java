@@ -24,7 +24,8 @@ package nl.plaatsoft.knightsquest.ui;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,27 +58,65 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MySound;
 
+/**
+ * The Class Game.
+ */
 public class Game extends StackPane {
 
-	final static Logger log = Logger.getLogger(Game.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(Game.class);
 
+	/** The gc. */
 	private GraphicsContext gc;
+	
+	/** The canvas. */
 	private Canvas canvas;
+	
+	/** The pane 2. */
 	private Pane pane2; 
+	
+	/** The offset X. */
 	private double offsetX = 0;
+	
+	/** The offset Y. */
 	private double offsetY = 0;
+	
+	/** The timer. */
 	private AnimationTimer timer;
+	
+	/** The game over. */
 	private boolean gameOver;
+	
+	/** The turn. */
 	private int turn;
+	
+	/** The task. */
 	private Task<Void> task;	
+	
+	/** The pane 3. */
 	private Pane pane3;
+	
+	/** The label 1. */
 	private MyLabel label1;
+	
+	/** The label 2. */
 	private MyLabel label2;
+	
+	/** The label 3. */
 	private MyLabel label3;
+	
+	/** The label 4. */
 	private MyLabel label4;
+	
+	/** The label 5. */
 	private MyLabel[] label5;
+	
+	/** The btn. */
 	private MyButton btn;
 	
+	/**
+	 * Redraw.
+	 */
 	public void redraw() {
 		
 		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -91,6 +130,13 @@ public class Game extends StackPane {
 		}
 	}
 		
+	/**
+	 * Store score.
+	 *
+	 * @param points the points
+	 * @param level the level
+	 * @return the int
+	 */
 	public int storeScore(int points, int level) {
 		
 		Score score = new Score(new Date(), points, level, CloudUser.getNickname(), "");				
@@ -108,6 +154,13 @@ public class Game extends StackPane {
 		return rank;
 	}
 		
+	/**
+	 * Calculate score.
+	 *
+	 * @param player the player
+	 * @param won the won
+	 * @return the int
+	 */
 	public int calculateScore(Player player, boolean won) {
 		
 		int score = 0;
@@ -136,6 +189,11 @@ public class Game extends StackPane {
 		return score;		
 	}
 		
+	/**
+	 * Player win.
+	 *
+	 * @param player the player
+	 */
 	public void playerWin(Player player) {
 		
 		if (!gameOver) {
@@ -171,6 +229,11 @@ public class Game extends StackPane {
 		}		
 	}
 	
+	/**
+	 * Player lose.
+	 *
+	 * @param player the player
+	 */
 	public void playerLose(Player player) {
 		
 		MySound.play(player, MySound.CLIP_END);
@@ -199,6 +262,9 @@ public class Game extends StackPane {
 		}
 	}
 
+	/**
+	 * Check game over.
+	 */
 	public void checkGameOver() {
 
 		int count=0;
@@ -243,6 +309,9 @@ public class Game extends StackPane {
 		}
 	}
 		
+	/**
+	 * Draw player score.
+	 */
 	public void drawPlayerScore() {
 		
 		Iterator<Player> iter1 = MyFactory.getPlayerDAO().getPlayers().iterator();
@@ -252,6 +321,11 @@ public class Game extends StackPane {
 		}
 	}
 		
+	/**
+	 * Decode message.
+	 *
+	 * @param json the json
+	 */
 	private void decodeMessage(String json) {
 						
 		try {
@@ -280,6 +354,9 @@ public class Game extends StackPane {
 	
 	}
 	
+	/**
+	 * Next turn.
+	 */
 	public void nextTurn() {
 		
 		log.info("-------");
@@ -328,6 +405,9 @@ public class Game extends StackPane {
 	}
 	
 
+	/**
+	 * Inits the.
+	 */
 	public void init() {
 		// Clear previous game 
 		MyFactory.clearFactory();
@@ -482,6 +562,9 @@ public class Game extends StackPane {
 		}		
 	}
 	
+	/**
+	 * Start.
+	 */
 	public void start() {
 		
 		// ------------------------------------------------------ 

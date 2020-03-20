@@ -34,20 +34,36 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class UDPServer.
+ */
 public class UDPServer {
 
-	final static Logger log = Logger.getLogger(UDPServer.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(UDPServer.class);
 	
+	/** The socket. */
 	private DatagramSocket socket = null;
+	
+	/** The group. */
 	private InetAddress group = null;
+	
+	/** The id. */
 	private String id = UUID.randomUUID().toString();
 	
+	/**
+	 * Gets the broadcast address.
+	 *
+	 * @return the broadcast address
+	 * @throws SocketException the socket exception
+	 */
 	private String getBroadcastAddress() throws SocketException {
 		
 		@SuppressWarnings("rawtypes")
@@ -70,6 +86,11 @@ public class UDPServer {
 		return null;
 	}
 	
+	/**
+	 * Inits the.
+	 *
+	 * @param port the port
+	 */
 	public void init(int port) {
 		
 		try {
@@ -83,6 +104,12 @@ public class UDPServer {
 		}
 	}
 
+	/**
+	 * Show.
+	 *
+	 * @param send the send
+	 * @param packet the packet
+	 */
 	private void show(boolean send, DatagramPacket packet) {
 		String data = new String(packet.getData());
 
@@ -98,6 +125,11 @@ public class UDPServer {
 		}
 	}
 		
+	/**
+	 * Sent.
+	 *
+	 * @param data the data
+	 */
 	private void sent(byte[] data) {
 		
 		try {
@@ -110,6 +142,11 @@ public class UDPServer {
 		}		
 	}
 	
+	/**
+	 * Receive.
+	 *
+	 * @return the string
+	 */
 	public String receive() {
 				
 		String json = null;
@@ -128,13 +165,20 @@ public class UDPServer {
 	}
 	
 	
+	/**
+	 * Filter.
+	 *
+	 * @param json the json
+	 * @param id the id
+	 * @return the string
+	 */
 	public String filter(String json, String id) {
 		
 		try {
 			JSONObject obj = new JSONObject(json);
 			String id2 = obj.getString("id");
 			
-			if (id.toString().equals(id2)) {			
+			if (id.equals(id2)) {			
 				return null;
 			}
 			return json;
@@ -145,10 +189,19 @@ public class UDPServer {
 		}			
 	}
 	
+	/**
+	 * Close.
+	 */
 	public void close() {
 		socket.close();		
 	}
 	
+	/**
+	 * Creates the header.
+	 *
+	 * @return the JSON object
+	 * @throws JSONException the JSON exception
+	 */
 	private JSONObject createHeader() throws JSONException {
 		Date now = new Date();
 		JSONObject msg = new JSONObject();
@@ -162,6 +215,9 @@ public class UDPServer {
 		return msg;		
 	}
 	
+	/**
+	 * Ping.
+	 */
 	public void ping() {
 		
 		JSONObject msg = null; 
@@ -175,7 +231,10 @@ public class UDPServer {
 		sent(msg.toString().getBytes());		
 	}
 	
-	 public void pong() {
+	 /**
+ 	 * Pong.
+ 	 */
+ 	public void pong() {
 		 JSONObject msg = null; 
 		try {
 			msg = createHeader();
@@ -186,6 +245,12 @@ public class UDPServer {
 		sent( msg.toString().getBytes());	
 	}
 		
+	/**
+	 * Join.
+	 *
+	 * @param map the map
+	 * @param level the level
+	 */
 	public void join(int map, int level) {
 		JSONObject msg = null; 
 		try {
@@ -199,6 +264,9 @@ public class UDPServer {
 		sent(msg.toString().getBytes());
 	}
 	
+	/**
+	 * Abort.
+	 */
 	public void abort() {
 		JSONObject msg = null; 
 		try {
@@ -210,6 +278,14 @@ public class UDPServer {
 		sent(msg.toString().getBytes());
 	}
 		
+	/**
+	 * Move.
+	 *
+	 * @param x1 the x 1
+	 * @param y1 the y 1
+	 * @param x2 the x 2
+	 * @param y2 the y 2
+	 */
 	public void move(int x1, int y1, int x2, int y2) {
 		JSONObject msg = null; 
 		try {
@@ -225,6 +301,12 @@ public class UDPServer {
 		sent(msg.toString().getBytes());
 	}
 	
+	/**
+	 * Creates the.
+	 *
+	 * @param x2 the x 2
+	 * @param y2 the y 2
+	 */
 	public void create(int x2, int y2) {
 		JSONObject msg = null; 
 		try {
@@ -238,6 +320,9 @@ public class UDPServer {
 		sent(msg.toString().getBytes());
 	}
 	
+	/**
+	 * Turn.
+	 */
 	public void turn() {
 		JSONObject msg = null; 
 		try {

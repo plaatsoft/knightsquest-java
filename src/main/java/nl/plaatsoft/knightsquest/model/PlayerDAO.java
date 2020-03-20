@@ -31,10 +31,21 @@ import javafx.scene.paint.Color;
 import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
+/**
+ * The Class PlayerDAO.
+ */
 public class PlayerDAO {
 
+	/** The players. */
 	private List <Player> players = new ArrayList<Player>();
 	
+	/**
+	 * Gets the texture.
+	 *
+	 * @param gc the gc
+	 * @param player the player
+	 * @return the texture
+	 */
 	public void getTexture(GraphicsContext gc, int player) { 
 		
 		switch(player) {
@@ -65,6 +76,12 @@ public class PlayerDAO {
 		}		
 	}	
 	
+	/**
+	 * Gets the color.
+	 *
+	 * @param player the player
+	 * @return the color
+	 */
 	public String getColor(int player) { 
 		
 		switch(player) {
@@ -90,6 +107,15 @@ public class PlayerDAO {
 		return "";
 	}	
 	
+	/**
+	 * Creates the player.
+	 *
+	 * @param gc the gc
+	 * @param id the id
+	 * @param pane the pane
+	 * @param type the type
+	 * @return the player
+	 */
 	public Player createPlayer(GraphicsContext gc, int id, Pane pane, PlayerEnum type) {
 			
 		Player player = new Player(id, type);
@@ -102,6 +128,11 @@ public class PlayerDAO {
 		return player;
 	}
 	
+	/**
+	 * Gets the human player.
+	 *
+	 * @return the human player
+	 */
 	public Player getHumanPlayer() {
 		
 		Iterator<Player> iter = players.iterator();  
@@ -114,6 +145,12 @@ public class PlayerDAO {
 		return null;
 	}
 		
+	/**
+	 * Checks for player no moves.
+	 *
+	 * @param player the player
+	 * @return true, if successful
+	 */
 	public boolean hasPlayerNoMoves(Player player) {
 	
 		/* Check if human player has moves lefts in this turn */
@@ -134,10 +171,20 @@ public class PlayerDAO {
 		return true;
 	}
 		
+	/**
+	 * Gets the players.
+	 *
+	 * @return the players
+	 */
 	public List <Player> getPlayers() {
 		return players;
 	}
 
+	/**
+	 * Sets the players.
+	 *
+	 * @param players the new players
+	 */
 	public void setPlayers(List <Player> players) {
 		this.players = players;
 	}

@@ -23,17 +23,32 @@ package nl.plaatsoft.knightsquest.model;
 
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
+/**
+ * The Class Building.
+ */
 public class Building {
 
+	/** The land. */
 	private Land land;	
+	
+	/** The type. */
 	private BuildingEnum type;
 
+	/**
+	 * Instantiates a new building.
+	 *
+	 * @param type the type
+	 * @param land the land
+	 */
 	public Building(BuildingEnum type, Land land) {
 		
 		this.type = type;
 		this.setLand(land);
 	}
 	
+	/**
+	 * Draw.
+	 */
 	void draw() {
 		
 		int offset = 0;
@@ -51,18 +66,38 @@ public class Building {
 		//log.info("draw ["+land.getX()+","+land.getY()+"]");
 	}
 
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public BuildingEnum getType() {
 		return type;
 	}
 
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
 	public void setType(BuildingEnum type) {
 		this.type = type;
 	}
 	
+	/**
+	 * Gets the land.
+	 *
+	 * @return the land
+	 */
 	public Land getLand() {
 		return land;
 	}
 
+	/**
+	 * Sets the land.
+	 *
+	 * @param land the new land
+	 */
 	public void setLand(Land land) {
 		this.land = land;
 	}

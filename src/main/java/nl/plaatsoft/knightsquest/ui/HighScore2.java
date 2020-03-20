@@ -45,14 +45,26 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
+/**
+ * The Class HighScore2.
+ */
 public class HighScore2 extends MyPanel {
 		   
+	/** The Constant formatter. */
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
 	
+	/** The y. */
 	private int y;
+	
+	/** The lines. */
 	private int lines; 
+	
+	/** The task. */
 	private Task<Void> task;
 			
+	/**
+	 * Show table.
+	 */
 	private void showTable() {
 		
 		int offset = ((MyFactory.getSettingDAO().getSettings().getWidth()-640)/2);
@@ -91,6 +103,9 @@ public class HighScore2 extends MyPanel {
 		}
 	}
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 		
 		MyFactory.getScoreDAO().clearGlobal();

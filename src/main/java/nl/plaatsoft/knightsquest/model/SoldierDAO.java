@@ -24,37 +24,67 @@ package nl.plaatsoft.knightsquest.model;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.scene.image.Image;
 
-import nl.plaatsoft.knightsquest.model.Region;
-import nl.plaatsoft.knightsquest.model.Land;
-import nl.plaatsoft.knightsquest.model.Player;
-import nl.plaatsoft.knightsquest.model.Soldier;
-import nl.plaatsoft.knightsquest.model.SoldierEnum;
 import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyRandom;
 
+/**
+ * The Class SoldierDAO.
+ */
 public class  SoldierDAO {
 	
-	final private static Logger log = Logger.getLogger(SoldierDAO.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(SoldierDAO.class);
 		
+	/** The tower. */
 	private Image tower;
+	
+	/** The tower 2. */
 	private Image tower2;
+	
+	/** The pawn. */
 	private Image pawn;
+	
+	/** The pawn 2. */
 	private Image pawn2;
+	
+	/** The horse. */
 	private Image horse;
+	
+	/** The horse 2. */
 	private Image horse2;
+	
+	/** The bishop. */
 	private Image bishop;
+	
+	/** The bishop 2. */
 	private Image bishop2;
+	
+	/** The queen. */
 	private Image queen;
+	
+	/** The queen 2. */
 	private Image queen2;
+	
+	/** The king. */
 	private Image king;
+	
+	/** The king 2. */
 	private Image king2;
+	
+	/** The cross. */
 	private Image cross;
 			
+	/**
+	 * Inits the.
+	 *
+	 * @param size the size
+	 */
 	public void init(int size) {
 		tower = new Image("images/tower.png", size+4, size+4, false, false);
 		tower2 = new Image("images/tower2.png", size+4, size+4, false, false);
@@ -71,6 +101,11 @@ public class  SoldierDAO {
 		cross = new Image("images/cross.png", size+4, size+4, false, false);
 	}
 
+	/**
+	 * Creates the bot soldier.
+	 *
+	 * @param region the region
+	 */
 	public void createBotSoldier(Region region) {
 						
 		/* Create new Soldier if there is enough food */  
@@ -94,6 +129,11 @@ public class  SoldierDAO {
 		}
 	}
 		
+	/**
+	 * New soldier arrive.
+	 *
+	 * @param region the region
+	 */
 	public void newSoldierArrive(Region region) {
 		
 		/* Inform player that new soldier has arrived if there is enough food */  
@@ -108,6 +148,12 @@ public class  SoldierDAO {
 		}
 	}
 		
+	/**
+	 * Enable soldier.
+	 *
+	 * @param player the player
+	 * @return the int
+	 */
 	public int enableSoldier(Player player) {
 		
 		int count = 0;
@@ -131,6 +177,11 @@ public class  SoldierDAO {
 		return count;
 	}
 		
+	/**
+	 * Move bot soldier.
+	 *
+	 * @param region the region
+	 */
 	/* Move bots smart */
 	public void moveBotSoldier(Region region) {
 		
@@ -213,6 +264,13 @@ public class  SoldierDAO {
 		log.debug("leave");
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param soldier the soldier
+	 * @param enabled the enabled
+	 * @return the image
+	 */
 	public Image get(SoldierEnum soldier, boolean enabled) {
 	
 		switch(soldier) {
@@ -268,6 +326,12 @@ public class  SoldierDAO {
 		return null;
 	}		
 	
+	/**
+	 * Upgrade.
+	 *
+	 * @param type the type
+	 * @return the soldier enum
+	 */
 	public SoldierEnum upgrade(SoldierEnum type) {
 		
 		SoldierEnum value;
@@ -298,6 +362,12 @@ public class  SoldierDAO {
 		return value;
 	}
 	
+	/**
+	 * Food.
+	 *
+	 * @param type the type
+	 * @return the int
+	 */
 	public int food(SoldierEnum type) {
 			
 		int value=0;

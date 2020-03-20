@@ -21,23 +21,42 @@
 
 package nl.plaatsoft.knightsquest.network;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.json.JSONObject;
 
+/**
+ * The Class CloudGeoCode.
+ */
 public class CloudGeoCode {
 
-	final static Logger log = Logger.getLogger( CloudScore.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(CloudGeoCode.class);
 	
-	static private String country;
-	static private String city;
+	/** The country. */
+	private static String country;
+	
+	/** The city. */
+	private static String city;
 			
+	/**
+	 * Instantiates a new cloud geo code.
+	 */
+	private CloudGeoCode() {
+	    throw new IllegalStateException("CloudGeoCode class");
+    }
+	
+	/**
+	 * Fetch.
+	 */
 	static private void fetch() {
 		
-		String url = "http://freegeoip.net/json";
-			
-		log.info(url);		
+		String url = "https://freegeoip.live/json";
+		
+		log.info("TX: {}", url);		
 		String json = CloudUtils.executeGet(url);
-		log.info(json);
+		log.info("RX: {}", json);
 		
 		try {
 			JSONObject obj = new JSONObject(json);
@@ -49,6 +68,11 @@ public class CloudGeoCode {
 		}		
 	}
 
+	/**
+	 * Gets the country.
+	 *
+	 * @return the country
+	 */
 	static public String getCountry() {
 		
 		if (country==null) {
@@ -57,6 +81,11 @@ public class CloudGeoCode {
 		return country.toLowerCase();
 	}
 
+	/**
+	 * Gets the city.
+	 *
+	 * @return the city
+	 */
 	static public String getCity() {
 		if (city==null) {
 			fetch();

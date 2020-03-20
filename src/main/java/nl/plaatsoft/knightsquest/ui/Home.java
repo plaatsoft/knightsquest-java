@@ -37,11 +37,20 @@ import nl.plaatsoft.knightsquest.tools.MyImageView;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Home.
+ */
 public class Home extends MyPanel {
 		
+	/** The label 3. */
 	private MyLabel label3;
+	
+	/** The task. */
 	private Task<Void> task;
 	
+	/**
+	 * Instantiates a new home.
+	 */
 	Home () {
 		
 		Image image1 = new Image("images/background4.jpg");
@@ -102,6 +111,9 @@ public class Home extends MyPanel {
 		};
     }
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {		
 		new Thread(task).start();
 	}

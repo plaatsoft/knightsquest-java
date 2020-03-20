@@ -19,10 +19,17 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
+/**
+ * The Class Intro2.
+ */
 public class Intro2 extends MyPanel {
 
+	/** The media player. */
 	private MediaPlayer mediaPlayer = null;
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 		setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 		

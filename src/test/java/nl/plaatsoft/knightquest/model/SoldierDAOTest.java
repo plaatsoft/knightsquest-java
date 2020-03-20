@@ -34,8 +34,14 @@ import nl.plaatsoft.knightsquest.model.Region;
 import nl.plaatsoft.knightsquest.model.SoldierDAO;
 import nl.plaatsoft.knightsquest.tools.MyData;
 
+/**
+ * The Class SoldierDAOTest.
+ */
 public class SoldierDAOTest {
 		
+	/**
+	 * Test 1.
+	 */
 	@Test
 	public void test1() {
 		

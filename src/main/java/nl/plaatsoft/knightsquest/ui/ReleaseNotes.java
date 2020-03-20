@@ -36,17 +36,25 @@ import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 import nl.plaatsoft.knightsquest.tools.MyScrollBar;
 
+/**
+ * The Class ReleaseNotes.
+ */
 public class ReleaseNotes extends MyPanel {
 
+	/** The version. */
 	private static String[] version = {
 
-			"28-11-2016 (Version 0.4)\n" 
+			"20-03-2020 (Version 0.5.0)\n" 
+					+ "- Improve logging framework.\n"
+					+ "- Added java doc source code.\n",
+									
+			"28-11-2016 (Version 0.4.0)\n" 
 					+ "- Added Mode Selector page.\n"
 					+ "- Added Player vs Player page.\n"
 					+ "- Added lots of sound effects.\n"
 					+ "- Sound effects can be switch on/off on settings page.\n",
 					
-			"23-11-2016 (Version 0.3)\n" 
+			"23-11-2016 (Version 0.3.0)\n" 
 					+ "- Added 3 screen resolutions.\n"
 					+ "- Increase amount of maps to 60.\n"
 					+ "- Improve game play. Now maps must be unlocked.\n"
@@ -56,7 +64,7 @@ public class ReleaseNotes extends MyPanel {
 					+ "- Bugfix: Second game initialization is working fine.\n"
 					+ "- Bugfix: Now autmatic next turn detection is working fine\n",
 			
-			"18-11-2016 (Version 0.2)\n" 					
+			"18-11-2016 (Version 0.2.0)\n" 					
 					+ "- Add information boxes on game screen\n"
 					+ "- Improve bots behalvior\n"
 					+ "- Added new background.\n" 
@@ -65,7 +73,7 @@ public class ReleaseNotes extends MyPanel {
 					+ "- Improve network detection.\n"
 					+ "- Add setting option to switch off the music.\n",
 
-			"12-11-2016 (Version 0.1)\n" 
+			"12-11-2016 (Version 0.1.0)\n" 
 					+ "- Added basic game engine (only bot mode for now).\n" 
 					+ "- Added six maps.\n"
 					+ "- Added intro background music.\n" 
@@ -73,8 +81,12 @@ public class ReleaseNotes extends MyPanel {
 					+ "- Added help, credits, release notes and donate page.\n"
 					+ "- Added two intro pages with basic animation.\n" };
 
+	/** The text. */
 	private static MyLabel text;
 
+	/**
+	 * Instantiates a new release notes.
+	 */
 	public ReleaseNotes() {
 
 		Image image1 = new Image("images/background4.jpg");
@@ -100,6 +112,9 @@ public class ReleaseNotes extends MyPanel {
 		getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight()-60, "Close", 18, Navigator.HOME));
 	}
 
+	/**
+	 * Draw.
+	 */
 	@Override
 	public void draw() {
 		

@@ -21,34 +21,72 @@
 
 package nl.plaatsoft.knightsquest.model;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
+/**
+ * The Class Land.
+ */
 public class Land {
 
-	final static Logger log = Logger.getLogger( Land.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( Land.class);
 	
+	/** The gc. */
 	private GraphicsContext gc;
+	
+	/** The x. */
 	private int x;
+	
+	/** The y. */
 	private int y;
+	
+	/** The size. */
 	private int size;
+	
+	/** The type. */
 	private LandEnum type; 
+	
+	/** The scale. */
 	private double scale;
+	
+	/** The polygon. */
 	private Polygon polygon = new Polygon();
 	
+	/** The source. */
 	// Needed to move player soldier
 	private boolean source = false;
+	
+	/** The destination. */
 	private boolean destination = false;
 
+	/** The player. */
 	private Player player;
+	
+	/** The region. */
 	private int region;
+	
+	/** The soldier. */
 	private Soldier soldier;
+	
+	/** The building. */
 	private Building building;
 	
+	/**
+	 * Instantiates a new land.
+	 *
+	 * @param gc the gc
+	 * @param x the x
+	 * @param y the y
+	 * @param size the size
+	 * @param type the type
+	 */
 	public Land(GraphicsContext gc, int x, int y, int size, LandEnum type) {
 		this.gc = gc;
 		this.x = x;
@@ -71,6 +109,9 @@ public class Land {
 				(double)(x*(size*4))+offset,(double)size+(y*size) });
 	}
 	
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 						
 		//log.info("draw land ["+x+","+y+"]");
@@ -133,108 +174,238 @@ public class Land {
 		}
 	}
 		
+	/**
+	 * Gets the x.
+	 *
+	 * @return the x
+	 */
 	public int getX() {
 		return x;
 	}
 	
+	/**
+	 * Sets the x.
+	 *
+	 * @param x the new x
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	
+	/**
+	 * Gets the y.
+	 *
+	 * @return the y
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * Sets the y.
+	 *
+	 * @param y the new y
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public LandEnum getType() {
 		return type;
 	}
 	
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
 	public void setType(LandEnum type) {
 		this.type = type;
 	}
 	
+	/**
+	 * Gets the soldier.
+	 *
+	 * @return the soldier
+	 */
 	public Soldier getSoldier() {
 		return soldier;
 	}
 	
+	/**
+	 * Sets the soldier.
+	 *
+	 * @param soldier the new soldier
+	 */
 	public void setSoldier(Soldier soldier) {
 		this.soldier = soldier;
 	}
 
+	/**
+	 * Gets the player.
+	 *
+	 * @return the player
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 
+	/**
+	 * Sets the player.
+	 *
+	 * @param player the new player
+	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
+	/**
+	 * Gets the region.
+	 *
+	 * @return the region
+	 */
 	public int getRegion() {
 		return region;
 	}
 
+	/**
+	 * Sets the region.
+	 *
+	 * @param region the new region
+	 */
 	public void setRegion(int region) {
 		this.region = region;
 	}
 	
+	/**
+	 * Gets the polygon.
+	 *
+	 * @return the polygon
+	 */
 	public Polygon getPolygon() {
 		return polygon;
 	}
 
+	/**
+	 * Sets the polygon.
+	 *
+	 * @param polygon the new polygon
+	 */
 	public void setPolygon(Polygon polygon) {
 		this.polygon = polygon;
 	}
 		
+	/**
+	 * Gets the gc.
+	 *
+	 * @return the gc
+	 */
 	public GraphicsContext getGc() {
 		return gc;
 	}
 
+	/**
+	 * Sets the gc.
+	 *
+	 * @param gc the new gc
+	 */
 	public void setGc(GraphicsContext gc) {
 		this.gc = gc;
 	}
 
+	/**
+	 * Gets the size.
+	 *
+	 * @return the size
+	 */
 	public int getSize() {
 		return size;
 	}
 
+	/**
+	 * Sets the size.
+	 *
+	 * @param size the new size
+	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
 
+	/**
+	 * Checks if is source.
+	 *
+	 * @return true, if is source
+	 */
 	public boolean isSource() {
 		return source;
 	}
 
+	/**
+	 * Sets the source.
+	 *
+	 * @param source the new source
+	 */
 	public void setSource(boolean source) {
 		this.source = source;
 	}
 
+	/**
+	 * Checks if is destination.
+	 *
+	 * @return true, if is destination
+	 */
 	public boolean isDestination() {
 		return destination;
 	}
 
+	/**
+	 * Sets the destination.
+	 *
+	 * @param destination the new destination
+	 */
 	public void setDestination(boolean destination) {
 		this.destination = destination;
 	}
 
+	/**
+	 * Gets the scale.
+	 *
+	 * @return the scale
+	 */
 	public double getScale() {
 		return scale;
 	}
 
+	/**
+	 * Sets the scale.
+	 *
+	 * @param scale the new scale
+	 */
 	public void setScale(double scale) {
 		this.scale = scale;
 		polygon.setScaleX(scale);
 		polygon.setScaleY(scale);
 	}
 
+	/**
+	 * Gets the building.
+	 *
+	 * @return the building
+	 */
 	public Building getBuilding() {
 		return building;
 	}
 
+	/**
+	 * Sets the building.
+	 *
+	 * @param building the new building
+	 */
 	public void setBuilding(Building building) {
 		this.building = building;
 	}

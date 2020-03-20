@@ -38,13 +38,23 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
+/**
+ * The Class HighScore1.
+ */
 public class HighScore1 extends MyPanel {
 		   
+	/** The Constant formatter. */
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
 	
+	/** The y. */
 	private int y;
+	
+	/** The lines. */
 	private int lines; 
 		
+	/**
+	 * Draw.
+	 */
 	public void draw() {	
 		
 		Image image1 = new Image("images/background4.jpg");

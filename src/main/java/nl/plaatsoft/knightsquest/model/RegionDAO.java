@@ -25,39 +25,45 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.media.AudioClip;
-import nl.plaatsoft.knightsquest.model.Region;
-import nl.plaatsoft.knightsquest.model.Land;
-import nl.plaatsoft.knightsquest.model.LandEnum;
-import nl.plaatsoft.knightsquest.model.Player;
-import nl.plaatsoft.knightsquest.model.Soldier;
-import nl.plaatsoft.knightsquest.model.SoldierEnum;
+
 import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyRandom;
 import nl.plaatsoft.knightsquest.tools.MySound;
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class RegionDAO.
+ */
 public class RegionDAO {
 
-	final private static Logger log = Logger.getLogger(RegionDAO.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger(RegionDAO.class);
 
+	/**
+	 * Gets the region.
+	 *
+	 * @param newLand the new land
+	 * @return the region
+	 */
 	public Region getRegion(Land newLand) {
 		
 		Iterator<Player> iter1 = MyFactory.getPlayerDAO().getPlayers().iterator();  	
 		while (iter1.hasNext()) {
-			Player player = (Player) iter1.next();			
+			Player player = iter1.next();			
 			
 			Iterator<Region> iter2 = player.getRegion().iterator();  
 			while (iter2.hasNext()) {
-				Region region = (Region) iter2.next();
+				Region region = iter2.next();
 				
 				Iterator<Land> iter3 = region.getLands().iterator();  
 				while (iter3.hasNext()) {
-					Land land = (Land) iter3.next();
+					Land land = iter3.next();
 					
 					if (land.equals(newLand)) {
 						return region;
@@ -68,6 +74,14 @@ public class RegionDAO {
 		return null;
 	}
 	
+	/**
+	 * Creates the start region.
+	 *
+	 * @param regionId the region id
+	 * @param player the player
+	 * @param pane the pane
+	 * @return the region
+	 */
 	public Region createStartRegion(int regionId, Player player, Pane pane) {
 
 		Region region = null;
@@ -135,6 +149,12 @@ public class RegionDAO {
 		return region;
 	}
 
+	/**
+	 * Gets the tower position.
+	 *
+	 * @param region the region
+	 * @return the tower position
+	 */
 	public Land getTowerPosition(Region region) {
 
 		Iterator<Land> iter = region.getLands().iterator();
@@ -149,6 +169,12 @@ public class RegionDAO {
 		return null;
 	}
 
+	/**
+	 * Search.
+	 *
+	 * @param land2 the land 2
+	 * @param regionId the region id
+	 */
 	/* recursion land search */
 	private void search(Land land2, int regionId) {
 
@@ -162,6 +188,11 @@ public class RegionDAO {
 		}
 	}
 
+	/**
+	 * Detected regions.
+	 *
+	 * @return the int
+	 */
 	public int detectedRegions() {
 
 		int regionId = 0;
@@ -193,6 +224,11 @@ public class RegionDAO {
 		return regionId;
 	}
 
+	/**
+	 * Rebuild regions.
+	 *
+	 * @param amountOfRegions the amount of regions
+	 */
 	public void rebuildRegions(int amountOfRegions) {
 
 		log.debug("enter");

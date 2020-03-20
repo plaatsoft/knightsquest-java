@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -38,19 +39,36 @@ import nl.plaatsoft.knightsquest.tools.MyRandom;
 import nl.plaatsoft.knightsquest.tools.MySound;
 import nl.plaatsoft.knightsquest.ui.Constants;
 
+/**
+ * The Class LandDAO.
+ */
 public class LandDAO {
 
-	final static Logger log = Logger.getLogger( LandDAO.class);
+	/** The Constant log. */
+	private static final Logger log = LogManager.getLogger( LandDAO.class);
 	
+	/** The lands. */
 	private Land[][] lands = new Land[Constants.SEGMENT_X][Constants.SEGMENT_Y];
 	
+	/** The water. */
 	private Image water;
+	
+	/** The forest. */
 	//private Image ocean;
 	private Image forest;
+	
+	/** The coast. */
 	private Image coast;
+	
+	/** The rock. */
 	private Image rock;
+	
+	/** The grass. */
 	private Image grass;
 			
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		water = new Image("images/water.png");
 		//ocean = new Image("images/ocean.png");
@@ -60,6 +78,13 @@ public class LandDAO {
 		grass = new Image("images/grass.png");
 	}
 	
+	/**
+	 * Gets the texture.
+	 *
+	 * @param gc the gc
+	 * @param type the type
+	 * @return the texture
+	 */
 	public void getTexture(GraphicsContext gc, LandEnum type) {
 		
 		if (water==null) {
@@ -102,6 +127,12 @@ public class LandDAO {
 		}
 	}
 	
+	/**
+	 * Gets the bot enemy land with soldier.
+	 *
+	 * @param land the land
+	 * @return the bot enemy land with soldier
+	 */
 	public List <Land> getBotEnemyLandWithSoldier(Land land) {
 		
 		log.debug("enter");
@@ -159,6 +190,12 @@ public class LandDAO {
 		return list2;
 	}
 	
+	/**
+	 * Gets the bot enemy land without soldier.
+	 *
+	 * @param land the land
+	 * @return the bot enemy land without soldier
+	 */
 	public List <Land> getBotEnemyLandWithoutSoldier(Land land) {
 		
 		log.debug("enter");
@@ -199,6 +236,13 @@ public class LandDAO {
 		return list2;
 	}
 		
+	/**
+	 * Gets the bot upgrade soldier.
+	 *
+	 * @param land the land
+	 * @param region the region
+	 * @return the bot upgrade soldier
+	 */
 	public List <Land> getBotUpgradeSoldier(Land land, Region region) {
 				
 		List <Land> list2 = new ArrayList<Land>();
@@ -221,6 +265,12 @@ public class LandDAO {
 		return list2;
 	}
 		
+	/**
+	 * Gets the bot own land.
+	 *
+	 * @param land the land
+	 * @return the bot own land
+	 */
 	public List <Land> getBotOwnLand(Land land) {
 		
 		log.debug("enter");
@@ -265,6 +315,12 @@ public class LandDAO {
 		return list2;
 	}
 	
+	/**
+	 * Gets the bot new land.
+	 *
+	 * @param land the land
+	 * @return the bot new land
+	 */
 	public List <Land> getBotNewLand(Land land) {
 		
 		log.debug("enter");
@@ -297,6 +353,12 @@ public class LandDAO {
 		return list2;
 	}
 
+	/**
+	 * Gets the bot region land.
+	 *
+	 * @param land the land
+	 * @return the bot region land
+	 */
 	public List <Land> getBotRegionLand(Land land) {
 		
 		log.debug("enter");
@@ -317,6 +379,13 @@ public class LandDAO {
 		return list2;
 	}
 	
+	/**
+	 * Gets the player selected land.
+	 *
+	 * @param mouseX the mouse X
+	 * @param mouseY the mouse Y
+	 * @return the player selected land
+	 */
 	public Land getPlayerSelectedLand(double mouseX, double mouseY) {
 		
 		for (int x=0; x<Constants.SEGMENT_X; x++) {			
@@ -329,6 +398,12 @@ public class LandDAO {
 		return null;
 	}
 	
+	/**
+	 * Move soldier.
+	 *
+	 * @param source the source
+	 * @param destination the destination
+	 */
 	public void moveSoldier(Land source, Land destination) {
 		
 		//log.info("Move soldier ["+source.getX()+","+source.getY()+"]->["+destination.getX()+","+destination.getY()+"]");
@@ -393,6 +468,12 @@ public class LandDAO {
 		MySound.play(source.getPlayer(), MySound.CLIP_STEP);	
 	}
 	
+	/**
+	 * Creates the soldier.
+	 *
+	 * @param source the source
+	 * @param destination the destination
+	 */
 	private void createSoldier(Land source, Land destination) {
 		
 		Region srcRegion = MyFactory.getRegionDAO().getRegion(source);
@@ -421,6 +502,9 @@ public class LandDAO {
 		}
 	}
 		
+	/**
+	 * Reset selected.
+	 */
 	public void resetSelected() {
 
 		for (int x=0; x<Constants.SEGMENT_X; x++) {			
@@ -431,6 +515,13 @@ public class LandDAO {
 		}
 	}
 		
+	/**
+	 * Gets the player land has friendly neigbor.
+	 *
+	 * @param land the land
+	 * @param player the player
+	 * @return the player land has friendly neigbor
+	 */
 	public boolean getPlayerLandHasFriendlyNeigbor(Land land, Player player) {
 			
 		List <Land> list1 = getNeigbors(land);
@@ -444,6 +535,11 @@ public class LandDAO {
 		return false;
 	}
 
+	/**
+	 * Sets the player soldier move destinations.
+	 *
+	 * @param land the new player soldier move destinations
+	 */
 	public void setPlayerSoldierMoveDestinations(Land land) {
 				
 		List <Land> list1;
@@ -518,6 +614,11 @@ public class LandDAO {
 		}	
 	}
 	
+	/**
+	 * Sets the player new soldier destinations.
+	 *
+	 * @param land the new player new soldier destinations
+	 */
 	public void setPlayerNewSoldierDestinations(Land land) {
 		
 		List <Land> list1 = getNeigbors(land);
@@ -549,6 +650,11 @@ public class LandDAO {
 		}	
 	}
 	
+	/**
+	 * Gets the source land.
+	 *
+	 * @return the source land
+	 */
 	private Land getSourceLand() {
 		
 		/* Return selected source land. Total map scan needed else harbors will not work */
@@ -562,6 +668,12 @@ public class LandDAO {
 		return null;			
 	}
 				
+	/**
+	 * Do player actions.
+	 *
+	 * @param land the land
+	 * @param player the player
+	 */
 	public void doPlayerActions(Land land, Player player) {
 	
 		if (land.isDestination()) {
@@ -619,10 +731,10 @@ public class LandDAO {
 	}
 		
 	/**
-	 * Get Neighers of select x,y coordinate
-	 * @param x
-	 * @param y
-	 * @return
+	 * Get Neighers of select x,y coordinate.
+	 *
+	 * @param land the land
+	 * @return the neigbors
 	 */
 	public List <Land> getNeigbors(Land land) {
 				
@@ -669,6 +781,12 @@ public class LandDAO {
 		return list;
 	}
 		
+	/**
+	 * Gets the neigbors 2.
+	 *
+	 * @param land the land
+	 * @return the neigbors 2
+	 */
 	public List <Land> getNeigbors2(Land land) {
 		
 		int x = land.getX();
@@ -771,6 +889,11 @@ public class LandDAO {
 		return list;
 	}
 	
+	/**
+	 * Scale map.
+	 *
+	 * @param scale the scale
+	 */
 	public void scaleMap(double scale) {
 		
 		//log.info("scale="+scale);
@@ -781,6 +904,9 @@ public class LandDAO {
 		}		
 	}
 
+	/**
+	 * Optimize map.
+	 */
 	private void optimizeMap() {
 		
 		for (int x=0; x<Constants.SEGMENT_X; x++) {
@@ -806,6 +932,9 @@ public class LandDAO {
 		}		
 	}
 		
+	/**
+	 * Creates the forest mountain.
+	 */
 	private void createForestMountain() {
 				
 		for (int x=0; x<Constants.SEGMENT_X; x++) {
@@ -824,6 +953,9 @@ public class LandDAO {
 		}		
 	}
 
+	/**
+	 * Creates the water.
+	 */
 	private  void createWater() {
 		
 		for (int x=0; x<Constants.SEGMENT_X; x++) {
@@ -844,6 +976,9 @@ public class LandDAO {
 		}		
 	}
 
+	/**
+	 * Creates the coast.
+	 */
 	private void createCoast() {
 		
 		for (int x=0; x<Constants.SEGMENT_X; x++) {
@@ -866,6 +1001,11 @@ public class LandDAO {
 	}
 	
 	
+	/**
+	 * Creates the grass.
+	 *
+	 * @param level the level
+	 */
 	private void createGrass(int level) {
 						
 		for (int i=0; i<level; i++) {
@@ -898,6 +1038,13 @@ public class LandDAO {
 		}
 	}
 	
+	/**
+	 * Creates the map.
+	 *
+	 * @param gc the gc
+	 * @param size the size
+	 * @param level the level
+	 */
 	public void createMap(GraphicsContext gc, int size, int level) {
 					
 		for (int x=0; x<Constants.SEGMENT_X; x++) {	
@@ -913,6 +1060,9 @@ public class LandDAO {
 		optimizeMap();			
 	}		
 		
+	/**
+	 * Draw.
+	 */
 	public void draw() {
 		for (int x=0; x<Constants.SEGMENT_X; x++) {					
 			for (int y=0; y<Constants.SEGMENT_Y; y++) {				
@@ -921,6 +1071,11 @@ public class LandDAO {
 		}		
 	}
 	
+	/**
+	 * Gets the lands.
+	 *
+	 * @return the lands
+	 */
 	public Land[][] getLands() {
 		return lands;
 	}	
