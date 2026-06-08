@@ -2,7 +2,7 @@ package nl.plaatsoft.knightsquest.model;
 
 import java.io.Serializable;
 
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
 /**
  * The Class Setting.
@@ -30,10 +30,10 @@ public class Setting implements Serializable {
 	private String resolution;
 	
 	/** The map unlocked. */
-	private boolean[] mapUnlocked = new boolean[Constants.MAX_LEVELS*10];
+	private boolean[] mapUnlocked = new boolean[AppConstants.MAX_LEVELS*10];
 	
 	/** The score. */
-	private int[] score = new int[Constants.MAX_LEVELS*10];
+	private int[] score = new int[AppConstants.MAX_LEVELS*10];
 		
 	/**
 	 * Instantiates a new setting.
@@ -44,12 +44,12 @@ public class Setting implements Serializable {
 		musicOn = true;		
 		resolution = "640x480";
 					
-		for(int i=0; i<(Constants.MAX_LEVELS*10); i++) {
+		for(int i = 0; i<(AppConstants.MAX_LEVELS*10); i++) {
 			mapUnlocked[i]=new Boolean(false);
 		}
 		mapUnlocked[1]= new Boolean(true);		
 		
-		for(int i=0; i<(Constants.MAX_LEVELS*10); i++) {
+		for(int i = 0; i<(AppConstants.MAX_LEVELS*10); i++) {
 			score[i]=new Integer(0);
 		}
 	}
@@ -213,7 +213,7 @@ public class Setting implements Serializable {
 	 */
 	public int getHighestMap() {
 		
-		for (int i=(Constants.MAX_LEVELS*10)-1; i>0; i--) {
+		for (int i = (AppConstants.MAX_LEVELS*10)-1; i>0; i--) {
 			if (mapUnlocked[i]==true) {
 				return i;
 			}

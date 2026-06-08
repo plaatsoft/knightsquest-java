@@ -1,10 +1,8 @@
-package nl.plaatsoft.knightquest.tools;
+package nl.plaatsoft.knightsquest.tools;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import nl.plaatsoft.knightsquest.tools.MyData;
 
 /**
  * The Class MyDataTest.

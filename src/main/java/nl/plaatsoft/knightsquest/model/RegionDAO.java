@@ -14,7 +14,7 @@ import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyRandom;
 import nl.plaatsoft.knightsquest.tools.MySound;
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
 /**
  * The Class RegionDAO
@@ -72,8 +72,8 @@ public class RegionDAO {
 
 			boolean bad = false;
 
-			int x = MyRandom.nextInt(Constants.SEGMENT_X);
-			int y = MyRandom.nextInt(Constants.SEGMENT_Y);
+			int x = MyRandom.nextInt(AppConstants.SEGMENT_X);
+			int y = MyRandom.nextInt(AppConstants.SEGMENT_Y);
 
 			// Each start region must have two lands between each other)
 			List<Land> list1 = MyFactory.getLandDAO().getNeigbors2(MyFactory.getLandDAO().getLands()[x][y]);
@@ -182,15 +182,15 @@ public class RegionDAO {
 		
 		// Reset all castles
 		Land lands[][] = MyFactory.getLandDAO().getLands();
-		for (int x = 0; x < Constants.SEGMENT_X; x++) {
-			for (int y = 0; y < Constants.SEGMENT_Y; y++) {
+		for (int x = 0; x < AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y < AppConstants.SEGMENT_Y; y++) {
 				lands[x][y].setRegion(regionId);
 			}
 		}
 
 		// Find them again
-		for (int x = 0; x < Constants.SEGMENT_X; x++) {
-			for (int y = 0; y < Constants.SEGMENT_Y; y++) {
+		for (int x = 0; x < AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y < AppConstants.SEGMENT_Y; y++) {
 
 				Land land = lands[x][y];
 				if ((land.getType() != LandEnum.WATER) && (land.getType() != LandEnum.OCEAN) && (land.getRegion() == 0)
@@ -240,8 +240,8 @@ public class RegionDAO {
 			int foodAvailable = 0;
 			int foodNeeded = 0;
 			int castleCount = 0;
-			for (int x = 0; x < Constants.SEGMENT_X; x++) {
-				for (int y = 0; y < Constants.SEGMENT_Y; y++) {
+			for (int x = 0; x < AppConstants.SEGMENT_X; x++) {
+				for (int y = 0; y < AppConstants.SEGMENT_Y; y++) {
 					if (lands[x][y].getRegion() == regionId) {
 
 						foodAvailable++;

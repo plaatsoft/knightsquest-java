@@ -16,7 +16,7 @@ import nl.plaatsoft.knightsquest.tools.MyData;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyRandom;
 import nl.plaatsoft.knightsquest.tools.MySound;
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
 /**
  * The Class LandDAO.
@@ -29,7 +29,7 @@ public class LandDAO {
 	private static final Logger log = LogManager.getLogger( LandDAO.class);
 	
 	/** The lands. */
-	private Land[][] lands = new Land[Constants.SEGMENT_X][Constants.SEGMENT_Y];
+	private Land[][] lands = new Land[AppConstants.SEGMENT_X][AppConstants.SEGMENT_Y];
 	
 	/** The water. */
 	private Image water;
@@ -369,8 +369,8 @@ public class LandDAO {
 	 */
 	public Land getPlayerSelectedLand(double mouseX, double mouseY) {
 		
-		for (int x=0; x<Constants.SEGMENT_X; x++) {			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 			    if (lands[x][y].getPolygon().contains(mouseX, mouseY)) {
 			       return lands[x][y];
 			    }		
@@ -488,8 +488,8 @@ public class LandDAO {
 	 */
 	public void resetSelected() {
 
-		for (int x=0; x<Constants.SEGMENT_X; x++) {			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 				lands[x][y].setDestination(false);
 				lands[x][y].setSource(false);
 			}		
@@ -639,8 +639,8 @@ public class LandDAO {
 	private Land getSourceLand() {
 		
 		/* Return selected source land. Total map scan needed else harbors will not work */
-		for (int x=0; x<Constants.SEGMENT_X; x++) {
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {			
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 				if (lands[x][y].isSource()){
 					return lands[x][y];
 				}
@@ -724,7 +724,7 @@ public class LandDAO {
 		
 		List <Land> list = new ArrayList<Land>();
 		
-		if (y+1<Constants.SEGMENT_Y) {
+		if (y+1< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+1]);
 		}
 		
@@ -732,7 +732,7 @@ public class LandDAO {
 			list.add(lands[x][y-1]);
 		}
 		
-		if (y+2<Constants.SEGMENT_Y) {
+		if (y+2< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+2]);
 		}
 		
@@ -741,16 +741,16 @@ public class LandDAO {
 		}
 		
 		if (y%2==1) {	
-			if ((x+1<Constants.SEGMENT_X) && (y+1<Constants.SEGMENT_Y)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y+1< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x+1][y+1]);
 			}
 			
-			if ((x+1<Constants.SEGMENT_X) && (y-1>=0)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y-1>=0)) {
 				list.add(lands[x+1][y-1]);
 			}						
 		} else {
 			
-			if ((x-1>=0) && (y+1<Constants.SEGMENT_Y)) {
+			if ((x-1>=0) && (y+1< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x-1][y+1]);
 			}
 			
@@ -775,7 +775,7 @@ public class LandDAO {
 		
 		List <Land> list = new ArrayList<Land>();
 		
-		if (y+1<Constants.SEGMENT_Y) {
+		if (y+1< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+1]);
 		}
 		
@@ -783,7 +783,7 @@ public class LandDAO {
 			list.add(lands[x][y-1]);
 		}
 		
-		if (y+2<Constants.SEGMENT_Y) {
+		if (y+2< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+2]);
 		}
 		
@@ -799,27 +799,27 @@ public class LandDAO {
 			list.add(lands[x][y-3]);
 		}
 		
-		if ((x+1<Constants.SEGMENT_X) && (y-2>=0)) {
+		if ((x+1< AppConstants.SEGMENT_X) && (y-2>=0)) {
 			list.add(lands[x+1][y-2]);
 		}
 				
-		if (x+1<Constants.SEGMENT_X) {
+		if (x+1< AppConstants.SEGMENT_X) {
 			list.add(lands[x+1][y]);
 		}
 		
-		if ((x+1<Constants.SEGMENT_X) && (y+2<Constants.SEGMENT_Y)) {
+		if ((x+1< AppConstants.SEGMENT_X) && (y+2< AppConstants.SEGMENT_Y)) {
 			list.add(lands[x+1][y+2]);
 		}
 		
-		if (y+3<Constants.SEGMENT_Y) {
+		if (y+3< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+3]);
 		}
 		
-		if (y+4<Constants.SEGMENT_Y) {
+		if (y+4< AppConstants.SEGMENT_Y) {
 			list.add(lands[x][y+4]);
 		}
 			
-		if ((x-1>=0) && (y+2<Constants.SEGMENT_Y)) {
+		if ((x-1>=0) && (y+2< AppConstants.SEGMENT_Y)) {
 			list.add(lands[x-1][y+2]);
 		}
 				
@@ -833,24 +833,24 @@ public class LandDAO {
 				
 		if (y%2==1) {	
 			
-			if ((x+1<Constants.SEGMENT_X) && (y-3>=0)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y-3>=0)) {
 				list.add(lands[x+1][y-3]);
 			}
 			
-			if ((x+1<Constants.SEGMENT_X) && (y+3<Constants.SEGMENT_Y)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y+3< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x+1][y+3]);
 			}
 			
-			if ((x+1<Constants.SEGMENT_X) && (y+1<Constants.SEGMENT_Y)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y+1< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x+1][y+1]);
 			}
 			
-			if ((x+1<Constants.SEGMENT_X) && (y-1>=0)) {
+			if ((x+1< AppConstants.SEGMENT_X) && (y-1>=0)) {
 				list.add(lands[x+1][y-1]);
 			}			
 			
 		} else {
-			if ((x-1>=0) && (y+3<Constants.SEGMENT_Y)) {
+			if ((x-1>=0) && (y+3< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x-1][y+3]);
 			}
 						
@@ -858,7 +858,7 @@ public class LandDAO {
 				list.add(lands[x-1][y-3]);
 			}
 			
-			if ((x-1>=0) && (y+1<Constants.SEGMENT_Y)) {
+			if ((x-1>=0) && (y+1< AppConstants.SEGMENT_Y)) {
 				list.add(lands[x-1][y+1]);
 			}
 			
@@ -878,8 +878,8 @@ public class LandDAO {
 	public void scaleMap(double scale) {
 		
 		//log.info("scale="+scale);
-		for (int x=0; x<Constants.SEGMENT_X; x++) {			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {			
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 				lands[x][y].setScale(scale);	
 			}
 		}		
@@ -890,9 +890,9 @@ public class LandDAO {
 	 */
 	private void optimizeMap() {
 		
-		for (int x=0; x<Constants.SEGMENT_X; x++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
 			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 			
 				if (lands[x][y].getType()==LandEnum.COAST) {
 					
@@ -918,9 +918,9 @@ public class LandDAO {
 	 */
 	private void createForestMountain() {
 				
-		for (int x=0; x<Constants.SEGMENT_X; x++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
 			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 			
 				if ((lands[x][y].getType()==LandEnum.GRASS) && (MyRandom.nextInt(2)==1)) {
 					
@@ -939,9 +939,9 @@ public class LandDAO {
 	 */
 	private  void createWater() {
 		
-		for (int x=0; x<Constants.SEGMENT_X; x++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
 			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 			
 				if (lands[x][y].getType()==LandEnum.COAST) {					
 					List <Land> list = getNeigbors(lands[x][y]);
@@ -962,9 +962,9 @@ public class LandDAO {
 	 */
 	private void createCoast() {
 		
-		for (int x=0; x<Constants.SEGMENT_X; x++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
 			
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 			
 				if (lands[x][y].getType()==LandEnum.GRASS) {					
 					List <Land> list = getNeigbors(lands[x][y]);
@@ -991,10 +991,10 @@ public class LandDAO {
 						
 		for (int i=0; i<level; i++) {
 			
-			int x = MyRandom.nextInt(Constants.SEGMENT_X);
-			int y = MyRandom.nextInt(Constants.SEGMENT_Y);
+			int x = MyRandom.nextInt(AppConstants.SEGMENT_X);
+			int y = MyRandom.nextInt(AppConstants.SEGMENT_Y);
 
-			for (int j=0; j<Constants.SEGMENT_Y; j++) {
+			for (int j = 0; j< AppConstants.SEGMENT_Y; j++) {
 				
 				lands[x][y].setType(LandEnum.GRASS);
 		 
@@ -1028,8 +1028,8 @@ public class LandDAO {
 	 */
 	public void createMap(GraphicsContext gc, int size, int level) {
 					
-		for (int x=0; x<Constants.SEGMENT_X; x++) {	
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 				lands[x][y] = new Land(gc, x, y, size, LandEnum.OCEAN);				
 			}
 		}
@@ -1045,8 +1045,8 @@ public class LandDAO {
 	 * Draw.
 	 */
 	public void draw() {
-		for (int x=0; x<Constants.SEGMENT_X; x++) {					
-			for (int y=0; y<Constants.SEGMENT_Y; y++) {				
+		for (int x = 0; x< AppConstants.SEGMENT_X; x++) {
+			for (int y = 0; y< AppConstants.SEGMENT_Y; y++) {
 				lands[x][y].draw();				
 			}
 		}		

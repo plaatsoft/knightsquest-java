@@ -1,50 +1,23 @@
 package nl.plaatsoft.knightsquest.tools;
 
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
-/**
- * The Class MyData.
- * 
- * @author wplaat
- */
 public class MyData {
 	
-	/** The Constant MODE_1P. */
 	public static final int MODE_1P = 1;
-	
-	/** The Constant MODE_2P. */
 	public static final int MODE_2P = 2;
-		
-	/** The level. */
 	private static int level = 0;
-	
-	/** The map. */
 	private static int map = 1;
-	
-	/** The mode. */
 	private static int mode = 1;
-		
-	/**
-	 * Gets the players.
-	 *
-	 * @return the players
-	 */
+
 	public static int getPlayers() {
-		
 		int amount=getBots() + 1;
-			
 		if (mode==MODE_2P) {
-			
 			amount = 2;
 		}	
 		return amount; 
 	}
 	
-	/**
-	 * Gets the seed.
-	 *
-	 * @return the seed
-	 */
 	public static int getSeed() {
 		
 		switch (map) {
@@ -109,11 +82,6 @@ public class MyData {
 		return value;
 	}
 
-	/**
-	 * Gets the chance new soldier.
-	 *
-	 * @return the chance new soldier
-	 */
 	public static int getChanceNewSoldier() {
 		
 		int value=1;
@@ -140,11 +108,6 @@ public class MyData {
 		return value;
 	}
 	
-	/**
-	 * Gets the harbors.
-	 *
-	 * @return the harbors
-	 */
 	public static int getHarbors() {
 		
 		int value = 0;
@@ -167,72 +130,33 @@ public class MyData {
 		return value;
 	}
 	
-	/**
-	 * Gets the level.
-	 *
-	 * @return the level
-	 */
 	public static int getLevel() {
 		return level;
 	}
 	
-	/**
-	 * Sets the level.
-	 *
-	 * @param level the new level
-	 */
 	public static void setLevel(int level) {
 		MyData.level = level;
 	}
 
-	/**
-	 * Sets the mode.
-	 *
-	 * @param mode the new mode
-	 */
 	public static void setMode(int mode) {
 		MyData.mode = mode;
 	}
 	
-	/**
-	 * Gets the mode.
-	 *
-	 * @return the mode
-	 */
 	public static int getMode() {
 		return mode;
 	}
 	
-	/**
-	 * Gets the map.
-	 *
-	 * @return the map
-	 */
 	public static int getMap() {
 		return map;
 	}
 
-	/**
-	 * Sets the map.
-	 *
-	 * @param map the new map
-	 */
 	public static void setMap(int map) {
-		
 		MyRandom.clear();
 		MyData.map = map;
 	}
 	
-	/**
-	 * Gets the next map.
-	 *
-	 * @param map the map
-	 * @return the next map
-	 */
 	public static int getNextMap(int map) {
-		
 		int value = 0;
-		
 		int tmp1 = (map/10) * 10;
 		int tmp2 = (map%10);
 		tmp2++;
@@ -243,7 +167,7 @@ public class MyData {
 		value = tmp1+tmp2;
 				
 		/* Maximum map reached */
-		if (tmp1>Constants.MAX_LEVELS) {
+		if (tmp1> AppConstants.MAX_LEVELS) {
 			value = 0;
 		}
 		

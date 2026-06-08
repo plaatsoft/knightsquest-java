@@ -6,62 +6,23 @@ import javafx.scene.shape.Polygon;
 
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 
-/**
- * The Class Land.
- * 
- * @author wplaat
- */
 public class Land {
 	
-	/** The gc. */
 	private GraphicsContext gc;
-	
-	/** The x. */
 	private int x;
-	
-	/** The y. */
 	private int y;
-	
-	/** The size. */
 	private int size;
-	
-	/** The type. */
-	private LandEnum type; 
-	
-	/** The scale. */
+	private LandEnum type;
 	private double scale;
-	
-	/** The polygon. */
 	private Polygon polygon = new Polygon();
-	
-	/** The source. */
 	// Needed to move player soldier
 	private boolean source = false;
-	
-	/** The destination. */
 	private boolean destination = false;
-
-	/** The player. */
 	private Player player;
-	
-	/** The region. */
 	private int region;
-	
-	/** The soldier. */
 	private Soldier soldier;
-	
-	/** The building. */
 	private Building building;
 	
-	/**
-	 * Instantiates a new land.
-	 *
-	 * @param gc the gc
-	 * @param x the x
-	 * @param y the y
-	 * @param size the size
-	 * @param type the type
-	 */
 	public Land(GraphicsContext gc, int x, int y, int size, LandEnum type) {
 		this.gc = gc;
 		this.x = x;
@@ -84,9 +45,6 @@ public class Land {
 				(double)(x*(size*4))+offset,(double)size+(y*size) });
 	}
 	
-	/**
-	 * Draw.
-	 */
 	public void draw() {
 						
 		//log.info("draw land ["+x+","+y+"]");

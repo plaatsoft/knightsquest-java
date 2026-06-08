@@ -11,21 +11,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.text.TextAlignment;
 
-/**
- * The Class MyHyperlink
- * 
- * @author wplaat
- */
 public class MyHyperlink extends Hyperlink {
 
-	/**
-	 * Instantiates a new my hyperlink.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @param url the url
-	 * @param fontSize the font size
-	 */
 	public MyHyperlink(int x, int y, String url, int fontSize) {
 		
 		setText(url);

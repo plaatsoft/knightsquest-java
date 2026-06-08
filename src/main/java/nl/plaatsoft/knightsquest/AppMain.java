@@ -1,7 +1,9 @@
-package nl.plaatsoft.knightsquest.ui;
+package nl.plaatsoft.knightsquest;
 
 import javax.swing.JOptionPane;
 
+import nl.plaatsoft.knightsquest.common.AppConstants;
+import nl.plaatsoft.knightsquest.ui.Navigator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,10 +22,10 @@ import nl.plaatsoft.knightsquest.tools.MyMusic;
  * 
  * @author wplaat
  */
-public class Main extends Application {
+public class AppMain extends Application {
 
 	/** The Constant log. */
-	private static final Logger log = LogManager.getLogger( Main.class);
+	private static final Logger log = LogManager.getLogger( AppMain.class);
 		
 	/**
 	 * Start.
@@ -40,7 +42,7 @@ public class Main extends Application {
 		Navigator.setStage(primaryStage);
 		Navigator.go(Navigator.INTRO1);
 
-		primaryStage.setTitle(Constants.APP_NAME + " v" + Constants.APP_VERSION);
+		primaryStage.setTitle(AppConstants.APP_NAME + " v" + AppConstants.APP_VERSION);
 		primaryStage.setScene(Navigator.getScene());
 		primaryStage.setWidth(MyFactory.getSettingDAO().getSettings().getWidth());
 		primaryStage.setHeight(MyFactory.getSettingDAO().getSettings().getHeight()+20);       	
@@ -75,7 +77,7 @@ public class Main extends Application {
 	 */
 	public static void main(String[] args) {
 		
-		log.info(Constants.APP_NAME + " v" + Constants.APP_VERSION+" start");
+		log.info(AppConstants.APP_NAME + " v" + AppConstants.APP_VERSION+" start");
 		
 		String version = System.getProperty("java.version");
 		String[] parts = version.split("_");
@@ -86,7 +88,7 @@ public class Main extends Application {
 		}
 		launch(args);
 		
-		log.info(Constants.APP_NAME + " v" + Constants.APP_VERSION+" end");
+		log.info(AppConstants.APP_NAME + " v" + AppConstants.APP_VERSION+" end");
 	}
 
 }

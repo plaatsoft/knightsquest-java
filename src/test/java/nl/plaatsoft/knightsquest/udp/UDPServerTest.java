@@ -1,4 +1,4 @@
-package nl.plaatsoft.knightquest.udp;
+package nl.plaatsoft.knightsquest.udp;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.plaatsoft.knightsquest.network.UDPServer;
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
 /**
  * The Class UDPServerTest.
@@ -36,7 +36,7 @@ public class UDPServerTest {
 		
 		try {
 			server = new UDPServer();
-			server.init(Constants.APP_UDP_PORT);
+			server.init(AppConstants.APP_UDP_PORT);
 		} catch (Exception e) {
 			log.error(e.getMessage());			
 		}

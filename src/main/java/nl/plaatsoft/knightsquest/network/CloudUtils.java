@@ -10,31 +10,16 @@ import java.net.URL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
-/**
- * The Class CloudUtils.
- * 
- * @author wplaat
- */
 public class CloudUtils {
 
-	/** The Constant log. */
 	private static final Logger log = LogManager.getLogger( CloudUtils.class);
 		
-	/**
-	 * Instantiates a new cloud utils.
-	 */
 	private CloudUtils() {
 	    throw new IllegalStateException("CloudUtils class");
     }
 	
-	/**
-	 * Execute get.
-	 *
-	 * @param targetURL the target URL
-	 * @return the string
-	 */
 	public static String executeGet(String targetURL) {
 
 		HttpURLConnection con=null;
@@ -44,7 +29,7 @@ public class CloudUtils {
 			con = (HttpURLConnection) obj.openConnection();
 			
 			con.setRequestMethod("GET");
-			con.setRequestProperty("User-Agent", Constants.APP_NAME);
+			con.setRequestProperty("User-Agent", AppConstants.APP_NAME);
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
@@ -67,13 +52,6 @@ public class CloudUtils {
 		}		
 	}
 	
-	/**
-	 * Execute post.
-	 *
-	 * @param targetURL the target URL
-	 * @param urlParameters the url parameters
-	 * @return the string
-	 */
 	public static String executePost(String targetURL, String urlParameters) {
 		
 		String text="";

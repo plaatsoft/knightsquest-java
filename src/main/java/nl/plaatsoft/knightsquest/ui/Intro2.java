@@ -19,58 +19,48 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
-/**
- * The Class Intro2.
- * 
- * @author wplaat
- */
 public class Intro2 extends MyPanel {
 
-	/** The media player. */
-	private MediaPlayer mediaPlayer = null;
-	
-	/**
-	 * Draw.
-	 */
-	public void draw() {
-		setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-		
-		try {
-			String path = Intro2.class.getResource("/video/intro.mp4").toExternalForm();		
-			Media media = new Media(path);
-			mediaPlayer = new MediaPlayer(media);
-			mediaPlayer.setAutoPlay(true);
-			
-			MediaView mediaView = new MediaView(mediaPlayer);	    
-			mediaView.setFitWidth(MyFactory.getSettingDAO().getSettings().getWidth());
-			mediaView.setFitHeight(MyFactory.getSettingDAO().getSettings().getHeight());
-			
-			getChildren().add(mediaView);
-				
-			mediaPlayer.setOnEndOfMedia(new Runnable() {
-				public void run() {
-					Navigator.go(Navigator.HOME);
-				}
-			});
-		}
-		catch (Exception e) {
-			
-			Image image1 = new Image("images/background4.jpg");
-	    	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
-	    	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-	    	setBackground(new Background(backgroundImage));
-	    	
-		    getChildren().add(new MyLabel(0,160,"PlaatSoft",90));	 
-		}	
-		
-		setOnMousePressed(new EventHandler<MouseEvent>() {
+  private MediaPlayer mediaPlayer = null;
 
-			public void handle(MouseEvent t) {
-				if (mediaPlayer!=null) {
-					mediaPlayer.stop();
-				}
-				Navigator.go(Navigator.HOME);						
-			}
-		});
-	}
+  public void draw() {
+    setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
+    try {
+      String path = Intro2.class.getResource("/video/intro.mp4").toExternalForm();
+      Media media = new Media(path);
+      mediaPlayer = new MediaPlayer(media);
+      mediaPlayer.setAutoPlay(true);
+
+      MediaView mediaView = new MediaView(mediaPlayer);
+      mediaView.setFitWidth(MyFactory.getSettingDAO().getSettings().getWidth());
+      mediaView.setFitHeight(MyFactory.getSettingDAO().getSettings().getHeight());
+
+      getChildren().add(mediaView);
+
+      mediaPlayer.setOnEndOfMedia(new Runnable() {
+        public void run() {
+          Navigator.go(Navigator.HOME);
+        }
+      });
+    } catch (Exception e) {
+
+      Image image1 = new Image("images/background4.jpg");
+      BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+      BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+      setBackground(new Background(backgroundImage));
+
+      getChildren().add(new MyLabel(0, 160, "PlaatSoft", 90));
+    }
+
+    setOnMousePressed(new EventHandler<MouseEvent>() {
+
+      public void handle(MouseEvent t) {
+        if (mediaPlayer != null) {
+          mediaPlayer.stop();
+        }
+        Navigator.go(Navigator.HOME);
+      }
+    });
+  }
 }

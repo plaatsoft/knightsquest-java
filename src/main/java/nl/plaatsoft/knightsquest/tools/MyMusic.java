@@ -6,46 +6,30 @@ import org.apache.logging.log4j.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-/**
- * The Class MyMusic.
- * 
- * @author wplaat
- */
 public class MyMusic {
 
-	/** The Constant log. */
-	private static final Logger log = LogManager.getLogger(MyMusic.class);
-	
-	/** The mp. */
-	private static MediaPlayer mp;
-	
-	/**
-	 * Inits the.
-	 */
-	public static void init() {
-		log.info("init");
-		String path = MyMusic.class.getResource("/sounds/intro.mp3").toExternalForm();
-        Media media = new Media(path);
-        mp = new MediaPlayer(media);
-        mp.setCycleCount(MediaPlayer.INDEFINITE);
-	}
-	
-	/**
-	 * Play.
-	 */
-	public static void play() {  
-		if (mp==null) {
-			init();
-		}
-        if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
-        	mp.play();
-        }
-	}
-		
-	/**
-	 * Stop.
-	 */
-	public static void stop() {
-		mp.stop();
-	}
+  private static final Logger log = LogManager.getLogger(MyMusic.class);
+
+  private static MediaPlayer mp;
+
+  public static void init() {
+    log.info("init");
+    String path = MyMusic.class.getResource("/sounds/intro.mp3").toExternalForm();
+    Media media = new Media(path);
+    mp = new MediaPlayer(media);
+    mp.setCycleCount(MediaPlayer.INDEFINITE);
+  }
+
+  public static void play() {
+    if (mp == null) {
+      init();
+    }
+    if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
+      mp.play();
+    }
+  }
+
+  public static void stop() {
+    mp.stop();
+  }
 }

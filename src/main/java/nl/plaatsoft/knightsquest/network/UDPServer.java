@@ -18,33 +18,18 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
-/**
- * The Class UDPServer
- * 
- * @author wplaat
- */
 public class UDPServer {
 
-	/** The Constant log. */
 	private static final Logger log = LogManager.getLogger(UDPServer.class);
 	
-	/** The socket. */
 	private DatagramSocket socket = null;
 	
-	/** The group. */
 	private InetAddress group = null;
 	
-	/** The id. */
 	private String id = UUID.randomUUID().toString();
 	
-	/**
-	 * Gets the broadcast address.
-	 *
-	 * @return the broadcast address
-	 * @throws SocketException the socket exception
-	 */
 	private String getBroadcastAddress() throws SocketException {
 		
 		@SuppressWarnings("rawtypes")
@@ -187,8 +172,8 @@ public class UDPServer {
 		Date now = new Date();
 		JSONObject msg = new JSONObject();
 		
-		msg.put("product", Constants.APP_NAME);
-		msg.put("version", Constants.APP_VERSION);
+		msg.put("product", AppConstants.APP_NAME);
+		msg.put("version", AppConstants.APP_VERSION);
 		msg.put("timestamp", now.getTime());
 		msg.put("id", id); 
 		msg.put("name", CloudUser.getNickname()); 

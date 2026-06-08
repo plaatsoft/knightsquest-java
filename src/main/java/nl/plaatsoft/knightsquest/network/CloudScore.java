@@ -9,30 +9,16 @@ import org.json.JSONObject;
 
 import nl.plaatsoft.knightsquest.model.Score;
 import nl.plaatsoft.knightsquest.tools.MyFactory;
-import nl.plaatsoft.knightsquest.ui.Constants;
+import nl.plaatsoft.knightsquest.common.AppConstants;
 
-/**
- * The Class CloudScore.
- */
 public class CloudScore {
-	
-	/** The Constant log. */
+
 	private static final Logger log = LogManager.getLogger( CloudScore.class);
 	
-	/**
-	 * Instantiates a new cloud score.
-	 */
 	private CloudScore() {
 	    throw new IllegalStateException("CloudScore class");
     }
 	
-	/**
-	 * Sets the.
-	 *
-	 * @param product the product
-	 * @param version the version
-	 * @param score the score
-	 */
 	public static void set(String product, String version, Score score) {
 					
 		String parameters;
@@ -44,16 +30,11 @@ public class CloudScore {
 		parameters += "score=" + score.getScore() + "&";
 		parameters += "level=" + score.getLevel();
 				
-		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
-		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("TX: {}?{}", AppConstants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(AppConstants.APP_WS_URL, parameters);
 		log.info("RX: {}", json);
 	}
 	
-	/**
-	 * Gets the local.
-	 *
-	 * @return the local
-	 */
 	public static void getLocal() {
 		
 		String parameters;
@@ -61,8 +42,8 @@ public class CloudScore {
 		parameters += "pid=" + CloudProduct.getPid() + "&";
 		parameters += "uid=" + CloudUser.getUid();
 		
-		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
-		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("TX: {}?{}", AppConstants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(AppConstants.APP_WS_URL, parameters);
 		log.info("RX: {}", json);
 		
 		try {
@@ -86,19 +67,14 @@ public class CloudScore {
 		}
 	}
 	
-	/**
-	 * Gets the global.
-	 *
-	 * @return the global
-	 */
 	public static void getGlobal() {
 		
 		String parameters;
 		parameters  = "action=getGlobalScore&";
 		parameters += "pid=" + CloudProduct.getPid();
 		
-		log.info("TX: {}?{}",Constants.APP_WS_URL, parameters);
-		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info("TX: {}?{}", AppConstants.APP_WS_URL, parameters);
+		String json = CloudUtils.executePost(AppConstants.APP_WS_URL, parameters);
 		log.info("RX: {}", json);
 						
 		try {
