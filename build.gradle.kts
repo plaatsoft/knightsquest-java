@@ -38,13 +38,13 @@ dependencies {
 }
 
 application {
-    mainClass.set("nl.plaatsoft.knightsquest.AppMain")
+    mainClass.set("nl.plaatsoft.knightsquest.Launcher")
 }
 
 // Shadow JAR (recommended for easy distribution)
 tasks.shadowJar {
     archiveBaseName.set("knightsquest")
     manifest {
-        attributes["Main-Class"] = "nl.plaatsoft.knightsquest.AppMain"
+        attributes["Main-Class"] = "nl.plaatsoft.knightsquest.Launcher"
     }
 }
