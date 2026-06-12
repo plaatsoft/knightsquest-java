@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: "friday"
+      time: "19:00"
+      timezone: Europe/Amsterdam
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 99
+    labels:
+      - "dependencies"

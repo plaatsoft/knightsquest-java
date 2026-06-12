@@ -17,9 +17,9 @@ import nl.plaatsoft.knightsquest.tools.MyScrollBar;
 
 public class ReleaseNotes extends MyPanel {
 
-  private static String[] version = {
+  private static final String[] version = {
 
-    "08-06-2025 (Version 1.0.0)\n"
+    "13-06-2025 (Version 1.0.0)\n"
       + "- Fix cloud user call\n"
       + "- Replace maven with Gradle\n"
       + "- Upgraded OpenFX from 8 to 25\n"
