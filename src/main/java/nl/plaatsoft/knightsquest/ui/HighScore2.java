@@ -96,7 +96,7 @@ public class HighScore2 extends MyPanel {
     getChildren().add(new MyLabel(x4, y, "Map", 25));
     getChildren().add(new MyLabel(x5, y, "Nickname", 25));
 
-    MyButton button1 = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.HOME);
+    MyButton button1 = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.HOME);
 
     getChildren().add(button1);
 
@@ -107,12 +107,9 @@ public class HighScore2 extends MyPanel {
       }
     };
 
-    task.stateProperty().addListener(new ChangeListener<Worker.State>() {
-
-      public void changed(ObservableValue<? extends State> observable, State oldValue, Worker.State newState) {
-        if (newState == Worker.State.SUCCEEDED) {
-          showTable();
-        }
+    task.stateProperty().addListener((observable, oldValue, newState) -> {
+      if (newState == State.SUCCEEDED) {
+        showTable();
       }
     });
 

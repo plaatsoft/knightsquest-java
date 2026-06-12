@@ -4,7 +4,7 @@ public class AppConstants {
 
 	public static final String APP_NAME = "KnightsQuest";
 	public static final String APP_VERSION = "1.0.0";
-	public static final String APP_BUILD = "Build (08-06-2026)";
+	public static final String APP_BUILD = "Build (12-06-2026)";
 	public static final String APP_WS_NAME = "Java-KnightsQuest";
 	public static final String APP_WS_URL = "https://service.plaatsoft.nl";
 	public static final String APP_DONATE_URL = "https://www.plaatsoft.nl/donate";

@@ -112,7 +112,7 @@ public class Settings extends MyPanel {
       x += 70;
     }
 
-    MyButton button = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.HOME);
+    MyButton button = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.HOME);
     getChildren().add(button);
 
     y += 150;

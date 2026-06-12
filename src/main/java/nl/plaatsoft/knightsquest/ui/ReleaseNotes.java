@@ -88,7 +88,7 @@ public class ReleaseNotes extends MyPanel {
     getChildren().add(new MyLabel(0, 20, "Release Notes", 50, "white", "-fx-font-weight: bold;"));
     text = new MyLabel(30, 120, version[0], 20, "white");
     getChildren().add(text);
-    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.HOME));
+    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.HOME));
   }
 
   @Override

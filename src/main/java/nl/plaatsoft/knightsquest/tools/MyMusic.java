@@ -13,19 +13,27 @@ public class MyMusic {
   private static MediaPlayer mp;
 
   public static void init() {
-    log.info("init");
-    String path = MyMusic.class.getResource("/sounds/intro.mp3").toExternalForm();
-    Media media = new Media(path);
-    mp = new MediaPlayer(media);
-    mp.setCycleCount(MediaPlayer.INDEFINITE);
+    try {
+      log.info("init");
+      String path = MyMusic.class.getResource("/sounds/intro.mp3").toExternalForm();
+      Media media = new Media(path);
+      mp = new MediaPlayer(media);
+      mp.setCycleCount(MediaPlayer.INDEFINITE);
+    } catch (Exception e) {
+      log.error("init", e.getMessage());
+    }
   }
 
   public static void play() {
-    if (mp == null) {
-      init();
-    }
-    if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
-      mp.play();
+    try {
+      if (mp == null) {
+        init();
+      }
+      if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
+        mp.play();
+      }
+    } catch (Exception e) {
+      log.error("play", e.getMessage());
     }
   }
 

@@ -69,6 +69,6 @@ public class HighScore1 extends MyPanel {
       }
     }
 
-    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Next", 18, Navigator.GLOBAL_HIGHSCORE));
+    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Next", 18, Navigator.GLOBAL_HIGHSCORE));
   }
 }

@@ -146,9 +146,6 @@ public class MapSelector extends MyPanel {
     createCanvas(5, x, y, size);
   }
 
-  /**
-   * Inits the.
-   */
   public void init() {
 
     level = (MyFactory.getSettingDAO().getSettings().getHighestMap() / 10);
@@ -162,7 +159,7 @@ public class MapSelector extends MyPanel {
     drawCanvas();
     createMaps(level);
 
-    MyButton close = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.MODE_SELECTOR);
+    MyButton close = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.MODE_SELECTOR);
     getChildren().add(close);
 
     MyButton prev = new MyButton(close.getLayoutX() - 70, close.getLayoutY(), "<", 18, Navigator.NONE);
@@ -179,13 +176,11 @@ public class MapSelector extends MyPanel {
 
     MyButton next = new MyButton(close.getLayoutX() + 200, close.getLayoutY(), ">", 18, Navigator.NONE);
     next.setPrefWidth(50);
-    next.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (level < (AppConstants.MAX_LEVELS - 1)) {
-          level++;
-        }
-        createMaps(level);
+    next.setOnAction(event -> {
+      if (level < (AppConstants.MAX_LEVELS - 1)) {
+        level++;
       }
+      createMaps(level);
     });
     getChildren().add(next);
   }

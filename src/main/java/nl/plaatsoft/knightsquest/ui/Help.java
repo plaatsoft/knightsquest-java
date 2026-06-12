@@ -96,6 +96,6 @@ public class Help extends MyPanel {
     getChildren().add(new MyLabel(x4, y, "0 (Dead soldier)", 20, "white"));
     getChildren().add(new MyLabel(x5, y, "0", 20, "white"));
 
-    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.HOME));
+    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.HOME));
   }
 }

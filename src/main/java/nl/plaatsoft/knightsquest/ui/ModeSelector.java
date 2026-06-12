@@ -50,7 +50,7 @@ public class ModeSelector extends MyPanel {
     getChildren().add(new MyImageView(x, y, "images/human.png", 1, Navigator.COMMUNICATION));
 
 
-    MyButton close = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.HOME);
+    MyButton close = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Close", 18, Navigator.HOME);
     getChildren().add(close);
   }
 }
