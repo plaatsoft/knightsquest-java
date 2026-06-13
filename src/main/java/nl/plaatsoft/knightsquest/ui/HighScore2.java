@@ -34,13 +34,11 @@ public class HighScore2 extends MyPanel {
     int x5 = 447 + offset;
     int x6 = 480 + offset;
 
-    y = 120;
+    y = 110;
 
     int lines = 1;
-    for (Score value : MyFactory.getScoreDAO().getGlobal()) {
+    for (Score score : MyFactory.getScoreDAO().getGlobal()) {
       y += 18;
-
-      Score score = value;
       getChildren().add(new MyLabel(x1, y, "" + lines, 18));
       getChildren().add(new MyLabel(x2, y, formatter.format(score.getTimestamp()), 18));
       getChildren().add(new MyLabel(x3, y, "" + score.getScore(), 18));
@@ -77,7 +75,7 @@ public class HighScore2 extends MyPanel {
     int x4 = 390 + offset;
     int x5 = 450 + offset;
 
-    y = 20;
+    y = 10;
     getChildren().add(new MyLabel(0, y, "Worldwide High Score", 50, "white", "-fx-font-weight: bold;"));
 
     y += 80;
@@ -98,7 +96,7 @@ public class HighScore2 extends MyPanel {
       }
     };
 
-    task.stateProperty().addListener((observable, oldValue, newState) -> {
+    task.stateProperty().addListener((_, _, newState) -> {
       if (newState == State.SUCCEEDED) {
         showTable();
       }

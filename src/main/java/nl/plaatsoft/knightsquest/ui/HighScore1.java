@@ -33,7 +33,7 @@ public class HighScore1 extends MyPanel {
     int x4 = 400 + offset;
     int x5 = 470 + offset;
 
-    int y = 20;
+    int y = 10;
     getChildren().add(new MyLabel(0, y, "Personal High Score", 50, "white", "-fx-font-weight: bold;"));
 
     y += 80;
