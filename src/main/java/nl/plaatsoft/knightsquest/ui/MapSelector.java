@@ -1,15 +1,9 @@
 package nl.plaatsoft.knightsquest.ui;
 
 import nl.plaatsoft.knightsquest.common.AppConstants;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -25,12 +19,11 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 import nl.plaatsoft.knightsquest.tools.MySound;
 
 public class MapSelector extends MyPanel {
-  private static final Logger log = LogManager.getLogger(MapSelector.class);
   private int level = 0;
-  private MyLabel[] label1 = new MyLabel[6];
-  private MyLabel[] label2 = new MyLabel[6];
-  private MyImageView[] image = new MyImageView[6];
-  private GraphicsContext[] gc = new GraphicsContext[6];
+  private final MyLabel[] label1 = new MyLabel[6];
+  private final MyLabel[] label2 = new MyLabel[6];
+  private final MyImageView[] image = new MyImageView[6];
+  private final GraphicsContext[] gc = new GraphicsContext[6];
 
   private void createMap(GraphicsContext gc, int map) {
 
@@ -47,17 +40,13 @@ public class MapSelector extends MyPanel {
     MyFactory.getLandDAO().createMap(gc, size, level + 1);
     MyFactory.getLandDAO().draw();
 
-    gc.getCanvas().setOnMousePressed(new EventHandler<MouseEvent>() {
-      public void handle(MouseEvent me) {
-
-        if (MyFactory.getSettingDAO().getSettings().getMapUnlocked(map)) {
-          MyData.setLevel(level);
-          MyData.setMap(map);
-          MyData.setMode(MyData.MODE_1P);
-          Navigator.go(Navigator.GAME);
-
-          MySound.play(MyFactory.getPlayerDAO().getHumanPlayer(), MySound.CLIP_START);
-        }
+    gc.getCanvas().setOnMousePressed(me -> {
+      if (MyFactory.getSettingDAO().getSettings().getMapUnlocked(map)) {
+        MyData.setLevel(level);
+        MyData.setMap(map);
+        MyData.setMode(MyData.MODE_1P);
+        Navigator.go(Navigator.GAME);
+        MySound.play(MyFactory.getPlayerDAO().getHumanPlayer(), MySound.CLIP_START);
       }
     });
   }
@@ -164,13 +153,11 @@ public class MapSelector extends MyPanel {
 
     MyButton prev = new MyButton(close.getLayoutX() - 70, close.getLayoutY(), "<", 18, Navigator.NONE);
     prev.setPrefWidth(50);
-    prev.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (level > 0) {
-          level--;
-        }
-        createMaps(level);
+    prev.setOnAction(event -> {
+      if (level > 0) {
+        level--;
       }
+      createMaps(level);
     });
     getChildren().add(prev);
 

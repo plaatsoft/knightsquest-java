@@ -1,7 +1,5 @@
 package nl.plaatsoft.knightsquest.ui;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -77,11 +75,7 @@ public class ReleaseNotes extends MyPanel {
     setBackground(background);
 
     MyScrollBar s1 = new MyScrollBar(version.length);
-    s1.valueProperty().addListener(new ChangeListener<Number>() {
-      public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
-        text.setText(version[new_val.intValue()]);
-      }
-    });
+    s1.valueProperty().addListener((ov, old_val, new_val) -> text.setText(version[new_val.intValue()]));
 
     getChildren().add(s1);
 

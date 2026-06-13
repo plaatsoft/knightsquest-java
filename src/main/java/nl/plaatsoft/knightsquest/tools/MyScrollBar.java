@@ -17,5 +17,4 @@ public class MyScrollBar extends ScrollBar {
 		setMinHeight(MyFactory.getSettingDAO().getSettings().getHeight()-205);
 		setOrientation(Orientation.VERTICAL);
 	}
-	
 }

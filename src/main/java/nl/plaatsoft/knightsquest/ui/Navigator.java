@@ -7,20 +7,6 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 
 public class Navigator {
 
-  private static Intro1 intro1;
-  private static Intro2 intro2;
-  private static Home home;
-  private static MapSelector mapSelector;
-  private static Game game;
-  private static Donate donate;
-  private static HighScore1 highScore1;
-  private static HighScore2 highScore2;
-  private static Credits credits;
-  private static ReleaseNotes releaseNotes;
-  private static Help help;
-  private static Settings settings;
-  private static ModeSelector modeSelector;
-  private static Communication communication;
   private static Scene scene;
   private static Stage stage;
 
@@ -32,8 +18,8 @@ public class Navigator {
   public static final int MODE_SELECTOR = 5;
   public static final int MAP_SELECTOR = 6;
   public static final int DONATE = 7;
-  public static final int LOCAL_HIGHSCORE = 8;
-  public static final int GLOBAL_HIGHSCORE = 9;
+  public static final int LOCAL_HIGH_SCORE = 8;
+  public static final int GLOBAL_HIGH_SCORE = 9;
   public static final int CREDITS = 10;
   public static final int RELEASE_NOTES = 11;
   public static final int HELP = 12;
@@ -46,87 +32,87 @@ public class Navigator {
     switch (page) {
 
       case INTRO1:
-        intro1 = new Intro1();
+        Intro1 intro1 = new Intro1();
         intro1.draw();
         scene = new Scene(intro1, MyFactory.getSettingDAO().getSettings().getWidth(), MyFactory.getSettingDAO().getSettings().getHeight());
         break;
 
       case INTRO2:
-        intro2 = new Intro2();
+        Intro2 intro2 = new Intro2();
         intro2.draw();
         scene.setRoot(intro2);
         break;
 
       case HOME:
-        home = new Home();
+        Home home = new Home();
         home.draw();
         scene.setRoot(home);
         break;
 
       case MODE_SELECTOR:
-        modeSelector = new ModeSelector();
+        ModeSelector modeSelector = new ModeSelector();
         modeSelector.draw();
         scene.setRoot(modeSelector);
         break;
 
       case MAP_SELECTOR:
-        mapSelector = new MapSelector();
+        MapSelector mapSelector = new MapSelector();
         mapSelector.init();
         scene.setRoot(mapSelector);
         break;
 
       case GAME:
-        game = new Game();
+        Game game = new Game();
         game.init();
         game.start();
         scene.setRoot(game);
         //setSceneEvents(scene, game);
         break;
 
-      case LOCAL_HIGHSCORE:
-        highScore1 = new HighScore1();
+      case LOCAL_HIGH_SCORE:
+        HighScore1 highScore1 = new HighScore1();
         highScore1.draw();
         scene.setRoot(highScore1);
         break;
 
-      case GLOBAL_HIGHSCORE:
-        highScore2 = new HighScore2();
+      case GLOBAL_HIGH_SCORE:
+        HighScore2 highScore2 = new HighScore2();
         highScore2.draw();
         scene.setRoot(highScore2);
         break;
 
       case DONATE:
-        donate = new Donate();
+        Donate donate = new Donate();
         donate.draw();
         scene.setRoot(donate);
         break;
 
       case CREDITS:
-        credits = new Credits();
+        Credits credits = new Credits();
         credits.draw();
         scene.setRoot(credits);
         break;
 
       case RELEASE_NOTES:
-        releaseNotes = new ReleaseNotes();
+        ReleaseNotes releaseNotes = new ReleaseNotes();
         releaseNotes.draw();
         scene.setRoot(releaseNotes);
         break;
 
       case SETTINGS:
-        settings = new Settings();
+        Settings settings = new Settings();
         settings.draw();
         scene.setRoot(settings);
         break;
 
       case HELP:
-        help = new Help();
+        Help help = new Help();
         help.draw();
         scene.setRoot(help);
         break;
 
       case COMMUNICATION:
-        communication = new Communication();
+        Communication communication = new Communication();
         communication.draw();
         scene.setRoot(communication);
         break;

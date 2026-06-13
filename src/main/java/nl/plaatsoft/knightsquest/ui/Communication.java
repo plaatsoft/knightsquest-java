@@ -7,12 +7,9 @@ import org.apache.logging.log4j.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -33,10 +30,10 @@ public class Communication extends MyPanel {
 
   private GraphicsContext gc;
   private int map = 1000;
-  private int level = 10;
+  private final int level = 10;
   private Task<Void> task1;
   private boolean stop = false;
-  private ObservableList<String> list = FXCollections.observableArrayList();
+  private final ObservableList<String> list = FXCollections.observableArrayList();
 
   private void drawMap(int map) {
 
@@ -78,16 +75,14 @@ public class Communication extends MyPanel {
     getChildren().add(new MyLabel(x + 340, y - 50, "Available Players", 30));
 
     MyListView listView = new MyListView(x + 340, y, 220, 225, list);
-    listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-      public void handle(MouseEvent event) {
-        log.info("clicked on " + listView.getSelectionModel().getSelectedItem());
-        MyData.setLevel(level);
-        MyData.setMap(map);
-        Navigator.go(Navigator.GAME);
-        MyFactory.getUDPServer().join(map, level);
+    listView.setOnMouseClicked(event -> {
+      log.info("clicked on " + listView.getSelectionModel().getSelectedItem());
+      MyData.setLevel(level);
+      MyData.setMap(map);
+      Navigator.go(Navigator.GAME);
+      MyFactory.getUDPServer().join(map, level);
 
-        MySound.play(MyFactory.getPlayerDAO().getHumanPlayer(), MySound.CLIP_START);
-      }
+      MySound.play(MyFactory.getPlayerDAO().getHumanPlayer(), MySound.CLIP_START);
     });
     getChildren().add(listView);
 
@@ -114,49 +109,41 @@ public class Communication extends MyPanel {
     drawMap(map);
 
     MyButton close = new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 60, "Close", 18, Navigator.NONE);
-    close.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        stop = true;
-        task1.cancel();
-        Navigator.go(Navigator.MODE_SELECTOR);
-      }
+    close.setOnAction(event -> {
+      stop = true;
+      task1.cancel();
+      Navigator.go(Navigator.MODE_SELECTOR);
     });
 
     getChildren().add(close);
 
     MyButton prev = new MyButton(close.getLayoutX() - 70, close.getLayoutY(), "<", 18, Navigator.NONE);
     prev.setPrefWidth(50);
-    prev.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (map > 0) {
-          map--;
-        }
-        drawMap(map);
+    prev.setOnAction(event -> {
+      if (map > 0) {
+        map--;
       }
+      drawMap(map);
     });
     getChildren().add(prev);
 
     MyButton next = new MyButton(close.getLayoutX() + 200, close.getLayoutY(), ">", 18, Navigator.NONE);
     next.setPrefWidth(50);
-    next.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (map < 2000) {
-          map++;
-        }
-        drawMap(map);
+    next.setOnAction(event -> {
+      if (map < 2000) {
+        map++;
       }
+      drawMap(map);
     });
     getChildren().add(next);
 
-    task1 = new Task<Void>() {
+    task1 = new Task<>() {
       public Void call() throws Exception {
         MyFactory.getUDPServer().init(AppConstants.APP_UDP_PORT);
-
         while (!stop) {
-
           MyFactory.getUDPServer().ping();
           String json = MyFactory.getUDPServer().receive();
-          if (json.length() > 0) {
+          if (!json.isEmpty()) {
             stop = true;
           }
           Thread.sleep(1000);

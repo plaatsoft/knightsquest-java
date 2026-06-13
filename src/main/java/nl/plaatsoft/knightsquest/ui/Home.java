@@ -19,8 +19,8 @@ import nl.plaatsoft.knightsquest.tools.MyPanel;
 
 public class Home extends MyPanel {
 
-  private MyLabel label3;
-  private Task<Void> task;
+  private final MyLabel label3;
+  private final Task<Void> task;
 
   Home() {
 
@@ -38,7 +38,7 @@ public class Home extends MyPanel {
     int y = 30;
     getChildren().add(new MyButton(MyFactory.getSettingDAO().getSettings().getWidth() - 210, y, "Play", 18, Navigator.MODE_SELECTOR));
     y += 45;
-    getChildren().add(new MyButton(MyFactory.getSettingDAO().getSettings().getWidth() - 210, y, "High Score", 18, Navigator.LOCAL_HIGHSCORE));
+    getChildren().add(new MyButton(MyFactory.getSettingDAO().getSettings().getWidth() - 210, y, "High Score", 18, Navigator.LOCAL_HIGH_SCORE));
     y += 45;
     getChildren().add(new MyButton(MyFactory.getSettingDAO().getSettings().getWidth() - 210, y, "Settings", 18, Navigator.SETTINGS));
     y += 45;
@@ -52,8 +52,8 @@ public class Home extends MyPanel {
 
     getChildren().add(new MyButton(MyFactory.getSettingDAO().getSettings().getWidth() - 210, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Exit", 18, Navigator.EXIT));
 
-    int x = 0;
-    double scale = 1;
+    int x;
+    double scale;
     if (MyFactory.getSettingDAO().getSettings().getWidth() == 640) {
       x = -10;
       y = 60;
@@ -70,7 +70,7 @@ public class Home extends MyPanel {
 
     getChildren().add(new MyImageView(x, y, "images/knight1.png", scale));
 
-    task = new Task<Void>() {
+    task = new Task<>() {
       public Void call() {
         if (CloudCheck.isReachableByTCP("service.plaatsoft.nl")) {
           label3.setText(CloudVersion.get());

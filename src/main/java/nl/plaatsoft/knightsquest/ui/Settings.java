@@ -1,8 +1,6 @@
 package nl.plaatsoft.knightsquest.ui;
 
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,9 +24,9 @@ import nl.plaatsoft.knightsquest.tools.MyFactory;
 public class Settings extends MyPanel {
 
   private static final int MAX = 8;
-  private Label[] label = new Label[MAX];
-  private char[] letters = {'-', '-', '-', '-', '-', '-', '-', '-'};
-  private Task<Void> task;
+  private final Label[] label = new Label[MAX];
+  private final char[] letters = {'-', '-', '-', '-', '-', '-', '-', '-'};
+  private final Task<Void> task;
 
   public Label labelSpecial(int pos, int x, int y) {
 
@@ -55,22 +53,20 @@ public class Settings extends MyPanel {
     button.setLayoutX(x);
     button.setLayoutY(y);
 
-    button.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (up == true) {
-          letters[pos]++;
-          if (letters[pos] > 90) {
-            letters[pos] = 40;
-          }
-        } else {
-          letters[pos]--;
-          if (letters[pos] < 40) {
-            letters[pos] = 90;
-          }
+    button.setOnAction(event -> {
+      if (up) {
+        letters[pos]++;
+        if (letters[pos] > 90) {
+          letters[pos] = 40;
         }
-
-        label[pos].setText("" + letters[pos]);
+      } else {
+        letters[pos]--;
+        if (letters[pos] < 40) {
+          letters[pos] = 90;
+        }
       }
+
+      label[pos].setText("" + letters[pos]);
     });
     return button;
   }
@@ -121,19 +117,17 @@ public class Settings extends MyPanel {
 
     MyToggleButton btn2 = new MyToggleButton(x1 - 10, y + 30, MyFactory.getSettingDAO().getSettings().isMusicOn(), 18);
     getChildren().add(btn2);
-    btn2.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
-          btn2.setText("Off");
-          MyFactory.getSettingDAO().getSettings().setMusicOn(false);
-          MyFactory.getSettingDAO().save();
-          MyMusic.stop();
-        } else {
-          btn2.setText("On");
-          MyFactory.getSettingDAO().getSettings().setMusicOn(true);
-          MyFactory.getSettingDAO().save();
-          MyMusic.play();
-        }
+    btn2.setOnAction(event -> {
+      if (MyFactory.getSettingDAO().getSettings().isMusicOn()) {
+        btn2.setText("Off");
+        MyFactory.getSettingDAO().getSettings().setMusicOn(false);
+        MyFactory.getSettingDAO().save();
+        MyMusic.stop();
+      } else {
+        btn2.setText("On");
+        MyFactory.getSettingDAO().getSettings().setMusicOn(true);
+        MyFactory.getSettingDAO().save();
+        MyMusic.play();
       }
     });
 
@@ -141,17 +135,15 @@ public class Settings extends MyPanel {
 
     MyToggleButton btn3 = new MyToggleButton(0, y + 30, MyFactory.getSettingDAO().getSettings().isSoundEffectsOn(), 18);
     getChildren().add(btn3);
-    btn3.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        if (MyFactory.getSettingDAO().getSettings().isSoundEffectsOn()) {
-          btn3.setText("Off");
-          MyFactory.getSettingDAO().getSettings().setSoundEffectsOn(false);
-          MyFactory.getSettingDAO().save();
-        } else {
-          btn3.setText("On");
-          MyFactory.getSettingDAO().getSettings().setSoundEffectsOn(true);
-          MyFactory.getSettingDAO().save();
-        }
+    btn3.setOnAction(event -> {
+      if (MyFactory.getSettingDAO().getSettings().isSoundEffectsOn()) {
+        btn3.setText("Off");
+        MyFactory.getSettingDAO().getSettings().setSoundEffectsOn(false);
+        MyFactory.getSettingDAO().save();
+      } else {
+        btn3.setText("On");
+        MyFactory.getSettingDAO().getSettings().setSoundEffectsOn(true);
+        MyFactory.getSettingDAO().save();
       }
     });
 
@@ -160,43 +152,39 @@ public class Settings extends MyPanel {
 
     String[] options2 = {"640x480", "800x600", "1024x768"};
     MyComboBox comboBox1 = new MyComboBox(x3 - 20, y + 30, MyFactory.getSettingDAO().getSettings().getResolution(), options2, 18);
-    comboBox1.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        String value = comboBox1.getSelectionModel().getSelectedItem().toString();
-        MyFactory.getSettingDAO().getSettings().setResolution(value);
-        MyFactory.getSettingDAO().save();
+    comboBox1.setOnAction(event -> {
+      String value = comboBox1.getSelectionModel().getSelectedItem().toString();
+      MyFactory.getSettingDAO().getSettings().setResolution(value);
+      MyFactory.getSettingDAO().save();
 
-        if (value.equals("640x480")) {
-          Navigator.getStage().setWidth(640);
-          Navigator.getStage().setHeight(480 + 20);
+      if (value.equals("640x480")) {
+        Navigator.getStage().setWidth(640);
+        Navigator.getStage().setHeight(480 + 20);
 
-        } else if (value.equals("800x600")) {
-          Navigator.getStage().setWidth(800);
-          Navigator.getStage().setHeight(600 + 20);
+      } else if (value.equals("800x600")) {
+        Navigator.getStage().setWidth(800);
+        Navigator.getStage().setHeight(600 + 20);
 
-        } else {
-          Navigator.getStage().setWidth(1024);
-          Navigator.getStage().setHeight(768 + 20);
-        }
-        Navigator.go(Navigator.HOME);
+      } else {
+        Navigator.getStage().setWidth(1024);
+        Navigator.getStage().setHeight(768 + 20);
       }
+      Navigator.go(Navigator.HOME);
     });
 
     getChildren().add(comboBox1);
 
 
-    task = new Task<Void>() {
+    task = new Task<>() {
       public Void call() {
         CloudUser.set(new String(letters).replace("-", ""));
         return null;
       }
     };
 
-    button.setOnAction(new EventHandler<ActionEvent>() {
-      public void handle(ActionEvent event) {
-        new Thread(task).start();
-        Navigator.go(Navigator.HOME);
-      }
+    button.setOnAction(event -> {
+      new Thread(task).start();
+      Navigator.go(Navigator.HOME);
     });
   }
 

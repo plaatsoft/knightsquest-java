@@ -9,29 +9,15 @@ import org.apache.logging.log4j.Logger;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import nl.plaatsoft.knightsquest.tools.MyFactory;
 import nl.plaatsoft.knightsquest.tools.MyMusic;
 
-/**
- * The Class Main.
- * 
- * @author wplaat
- */
 public class AppMain extends Application {
-
-	/** The Constant log. */
 	private static final Logger log = LogManager.getLogger( AppMain.class);
 		
-	/**
-	 * Start.
-	 *
-	 * @param primaryStage the primary stage
-	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -54,15 +40,12 @@ public class AppMain extends Application {
                primaryStage.setY(MyFactory.getSettingDAO().getSettings().getY());
         }
         
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-               MyFactory.getSettingDAO().getSettings().setX(primaryStage.getX());
-               MyFactory.getSettingDAO().getSettings().setY(primaryStage.getY());          
-               MyFactory.getSettingDAO().save();   
-               
-               Platform.exit();
-               System.exit(0);               
-            }
+        primaryStage.setOnCloseRequest(we -> {
+           MyFactory.getSettingDAO().getSettings().setX(primaryStage.getX());
+           MyFactory.getSettingDAO().getSettings().setY(primaryStage.getY());
+           MyFactory.getSettingDAO().save();
+           Platform.exit();
+           System.exit(0);
         });
         
         primaryStage.show();
@@ -70,11 +53,6 @@ public class AppMain extends Application {
 		MyMusic.play();        
 	}
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
 	public static void main(String[] args) {
 		
 		log.info(AppConstants.APP_NAME + " v" + AppConstants.APP_VERSION+" start");
@@ -90,5 +68,4 @@ public class AppMain extends Application {
 		
 		log.info(AppConstants.APP_NAME + " v" + AppConstants.APP_VERSION+" end");
 	}
-
 }

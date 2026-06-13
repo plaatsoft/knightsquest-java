@@ -15,20 +15,16 @@ import nl.plaatsoft.knightsquest.tools.MyLabel;
 import nl.plaatsoft.knightsquest.tools.MyPanel;
 
 import java.text.SimpleDateFormat;
-import java.util.Iterator;
 
 public class HighScore1 extends MyPanel {
 
-  private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
-  private int y;
-  private int lines;
+  private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
   public void draw() {
     Image image1 = new Image("images/background4.jpg");
     BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
     BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-    Background background = new Background(backgroundImage);
-    setBackground(background);
+    setBackground(new Background(backgroundImage));
 
     int offset = ((MyFactory.getSettingDAO().getSettings().getWidth() - 640) / 2);
     int x1 = 30 + offset;
@@ -37,7 +33,7 @@ public class HighScore1 extends MyPanel {
     int x4 = 400 + offset;
     int x5 = 470 + offset;
 
-    y = 20;
+    int y = 20;
     getChildren().add(new MyLabel(0, y, "Personal High Score", 50, "white", "-fx-font-weight: bold;"));
 
     y += 80;
@@ -48,11 +44,9 @@ public class HighScore1 extends MyPanel {
     getChildren().add(new MyLabel(x5, y, "Awards", 25));
     y += 20;
 
-    lines = 1;
-    Iterator<Score> iter = MyFactory.getScoreDAO().getLocal().iterator();
-    while (iter.hasNext()) {
+    int lines = 1;
+    for (Score score : MyFactory.getScoreDAO().getLocal()) {
       y += 18;
-      Score score = (Score) iter.next();
       getChildren().add(new MyLabel(x1, y, "" + lines, 18));
       getChildren().add(new MyLabel(x2, y, formatter.format(score.getTimestamp()), 18));
       getChildren().add(new MyLabel(x3, y, "" + score.getScore(), 18));
@@ -69,6 +63,6 @@ public class HighScore1 extends MyPanel {
       }
     }
 
-    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Next", 18, Navigator.GLOBAL_HIGHSCORE));
+    getChildren().add(new MyButton(0, MyFactory.getSettingDAO().getSettings().getHeight() - 70, "Next", 18, Navigator.GLOBAL_HIGH_SCORE));
   }
 }
