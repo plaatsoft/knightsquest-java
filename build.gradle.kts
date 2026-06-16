@@ -27,7 +27,7 @@ dependencies {
     implementation("org.openjfx:javafx-graphics:25")
 
     // JSON
-    implementation("org.json:json:20250107")
+    implementation("org.json:json:20260522")
 
     // Log4J
     implementation("org.apache.logging.log4j:log4j-core:2.26.0")
