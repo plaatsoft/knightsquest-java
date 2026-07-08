@@ -1,12 +1,13 @@
 plugins {
     id("org.openjfx.javafxplugin") version "0.1.0"
     id("com.gradleup.shadow") version "9.4.2"
+    `maven-publish`
     java
     application
 }
 
 group = "nl.plaatsoft.knightsquest"
-version = "1.0.0"
+version = "1.1.0-SNAPSHOT"
 
 java {
     toolchain {
@@ -14,8 +15,47 @@ java {
     }
 }
 
+// Declare properties from gradle.properties
+val nexusUrl: String = project.property("nexusUrl") as String
+val nexusUsername: String = project.property("nexusUsername") as String
+val nexusPassword: String = project.property("nexusPassword") as String
+
 repositories {
+    maven {
+        url = uri("${nexusUrl}/maven-public/")
+        credentials {
+            username = nexusUsername
+            password = nexusPassword
+        }
+    }
     mavenCentral()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        maven {
+            name = "nexus"
+
+            url = uri(
+                if (version.toString().endsWith("SNAPSHOT")) {
+                    "${nexusUrl}/maven-snapshots/"
+                } else {
+                    "${nexusUrl}/maven-releases/"
+                }
+            )
+
+            credentials {
+                username = nexusUsername
+                password = nexusPassword
+            }
+        }
+    }
 }
 
 dependencies {
