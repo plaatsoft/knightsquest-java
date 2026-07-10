@@ -70,8 +70,8 @@ dependencies {
     implementation("org.json:json:20260522")
 
     // Log4J
-    implementation("org.apache.logging.log4j:log4j-core:2.26.0")
-    implementation("org.apache.logging.log4j:log4j-api:2.26.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.26.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.26.1")
 
     // Junit
     testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0")
