@@ -61,10 +61,10 @@ publishing {
 dependencies {
 
     // JavaFX
-    implementation("org.openjfx:javafx-controls:26.0.1")
-    implementation("org.openjfx:javafx-fxml:26.0.1")
-    implementation("org.openjfx:javafx-media:26.0.1")
-    implementation("org.openjfx:javafx-graphics:26.0.1")
+    implementation("org.openjfx:javafx-controls:26.0.2")
+    implementation("org.openjfx:javafx-fxml:26.0.2")
+    implementation("org.openjfx:javafx-media:26.0.2")
+    implementation("org.openjfx:javafx-graphics:26.0.2")
 
     // JSON
     implementation("org.json:json:20260522")
