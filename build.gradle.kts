@@ -74,7 +74,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:2.26.0")
 
     // Junit
-    testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.3")
 }
 
 application {
